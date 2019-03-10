@@ -5,9 +5,18 @@ var
 	plumber 			= require('gulp-plumber'),
 	sass 					= require('gulp-sass'),
 	cssToScss 		= require('gulp-css-scss'),
+	imagemin 			= require('gulp-imagemin'), // Оптимизируем картинки
+	cache         = require('gulp-cache'), // Подключаем библиотеку кеширования
 
+	
 	reload				= browserSync.reload; 
 
+
+//-------------------------------------------	
+// Скопировать шрифты в директории dist
+// и преобразовать CSS в SCSS
+// Достаточно запустить один раз
+//-------------------------------------------	
 gulp.task('cssToScss', () => {
 	return gulp.src([
 		'app/libs/bootstrap/dist/css/bootstrap-grid.min.css',
@@ -42,6 +51,16 @@ gulp.task('sass', () => {
 		.pipe(browserSync.stream()); // Inject	
 });
 
+//----------------------------------------------
+// Оптимизация, минификация изображений
+//----------------------------------------------
+gulp.task('imagemin', () =>
+	gulp.src('app/img/**/*')	
+		.pipe(cache(imagemin()) // Cache Images
+		.pipe(gulp.dest('dist/img/'))
+));
+
+
 gulp.task('browser-sync', () => { 
 	browserSync({ 
 		server: {baseDir: 'dist'},
@@ -49,7 +68,7 @@ gulp.task('browser-sync', () => {
 	});
 });
 
-gulp.task('watch', ['pug', 'sass', 'browser-sync'], () => {
+gulp.task('watch', ['pug', 'sass', 'imagemin', 'browser-sync'], () => {
 	gulp.watch('app/pug/index.pug', ['pug']);
 	gulp.watch('app/sass/*.sass', ['sass']);
 });	
