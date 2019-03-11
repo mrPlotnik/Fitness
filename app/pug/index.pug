@@ -3,18 +3,31 @@ html(lang="en")
 	head
 		meta(charset="UTF-8")
 		link(rel="stylesheet", href="css/main.css")
+		link(href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet")
 		title Document
 	body
-		header
-			.nav-bar.m15
-				.logo
-					img(src="img/logo.png", alt="logo")
-				.nav.m15
-					ul
-						li home
-						li about us
-						li page
-						li blog
-						li contact
-				.btn.m15
-					a(href="") chose plan
+		
+		include includes/header.pug
+		include includes/section2.pug
+		
+		section#sec-3
+			.wrapper
+				h2 welcome to 
+					span fitness
+				p  Далеко-далеко за словесными горами в стране, гласных.
+					.row
+						.col-4.sec-3-item
+							img(src="img/sec3_item.jpg", alt="")
+							h3 живут рыбные
+							p Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Ведущими, возвращайся снова обеспечивает несколько.	
+						.col-4.sec-3-item
+							img(src="img/sec3_item.jpg", alt="")
+							h3 живут рыбные
+							p Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Она толку снова имени которой.	
+						.col-4.sec-3-item
+							img(src="img/sec3_item.jpg", alt="")
+							h3 и согласных живут
+							p Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Запятой большой великий, вершину раз.	
+							
+
+
