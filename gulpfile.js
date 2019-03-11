@@ -21,7 +21,7 @@ gulp.task('cssToScss', () => {
 	return gulp.src([
 		'app/libs/bootstrap/dist/css/bootstrap-grid.min.css',
 		// 'app/libs/magnific-popup/dist/magnific-popup.css',
-		// 'app/libs/animate.css/animate.min.css'
+		'app/libs/animate.css/animate.min.css'
 		])
 	.pipe(cssToScss())
 	.pipe(gulp.dest('app/libs/cssToScss'));
@@ -41,7 +41,7 @@ gulp.task('sass', () => {
 	return gulp.src('app/sass/**/*.sass')		
 		.pipe(sass({
 			// outputStyle: 'expand', 
-			// includePaths: require('node-bourbon').includePaths
+			includePaths: require('node-bourbon').includePaths
 		}).on('error', sass.logError)) // Оповещение в случае ошибки при компиляции SASS в CSS
 		// .pipe(autoprefixer(['last 15 versions'])) // Добавление автопрефиксов, для одинакового отображения во всех браузерах (последнии 15 версий)
 		// .pipe(gulp.dist('dist/css'))		
@@ -69,7 +69,7 @@ gulp.task('browser-sync', () => {
 });
 
 gulp.task('watch', ['pug', 'sass', 'imagemin', 'browser-sync'], () => {
-	gulp.watch('app/pug/index.pug', ['pug']);
+	gulp.watch('app/pug/**/*.pug', ['pug']);
 	gulp.watch('app/sass/*.sass', ['sass']);
 });	
 
