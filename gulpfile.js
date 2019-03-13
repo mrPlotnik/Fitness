@@ -5,6 +5,8 @@ var
 	plumber 			= require('gulp-plumber'),
 	sass 					= require('gulp-sass'),
 	cssToScss 		= require('gulp-css-scss'),
+	concat        = require('gulp-concat'),
+	uglify        = require('gulp-uglify'),
 	imagemin 			= require('gulp-imagemin'), // Оптимизируем картинки
 	cache         = require('gulp-cache'), // Подключаем библиотеку кеширования
 
@@ -51,6 +53,18 @@ gulp.task('sass', () => {
 		.pipe(browserSync.stream()); // Inject	
 });
 
+gulp.task('js', () => {
+	return gulp.src([
+		'app/libs/jquery/dist/jquery.min.js',
+		'app/libs/jQuery.equalHeights/jquery.equalheights.min.js',
+		'app/js/common.js', // Always at the end
+		])
+	.pipe(concat('scripts.min.js'))
+	// .pipe(uglify()) // Mifify js (opt.)
+	.pipe(gulp.dest('dist/js'))
+	.pipe(reload({ stream: true }))
+});
+
 //----------------------------------------------
 // Оптимизация, минификация изображений
 //----------------------------------------------
@@ -68,9 +82,10 @@ gulp.task('browser-sync', () => {
 	});
 });
 
-gulp.task('watch', ['pug', 'sass', 'imagemin', 'browser-sync'], () => {
+gulp.task('watch', ['pug', 'sass', 'js', 'imagemin', 'browser-sync'], () => {
 	gulp.watch('app/pug/**/*.pug', ['pug']);
 	gulp.watch('app/sass/*.sass', ['sass']);
+	gulp.watch('app/js/*.js', ['js']);
 });	
 
 
