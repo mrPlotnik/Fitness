@@ -19,6 +19,21 @@ var
 // и преобразовать CSS в SCSS
 // Достаточно запустить один раз
 //-------------------------------------------	
+gulp.task('beforeTheStart', ['cssToScss', 'copyFont'], () => {
+	console.log('Done! You can work. All is ready :)');
+});
+
+//-------------------------------------------
+// Копируем шрифты
+//-------------------------------------------
+gulp.task('copyFont', () => {
+	return gulp.src('app/fonts/*')		
+	.pipe(gulp.dest('dist/fonts'));
+});
+
+//-------------------------------------------
+// Компилируем CSS в SCSS
+//-------------------------------------------		
 gulp.task('cssToScss', () => {
 	return gulp.src([
 		'app/libs/bootstrap/dist/css/bootstrap-grid.min.css',
