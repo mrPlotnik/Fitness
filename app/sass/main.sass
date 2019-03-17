@@ -1,8 +1,11 @@
+@import 'bourbon'     // Миксины для SASS
+@import "font"
 @import "libs"        // Библиотеки
 @import "vars"        // Переменные
+        
 
 // Отключение предупреждений бурбона в консоли
-$output-bourbon-deprecation-warnings: false
+// $output-bourbon-deprecation-warnings: false
 
 *
 	margin: 0
@@ -11,8 +14,9 @@ $output-bourbon-deprecation-warnings: false
 
 body
 	font-size: 16px	
-	font-family: 'Roboto', sans-serif;
+	font-family: 'My-font', sans-serif;
 	color: $white-txt
+	font-weight: normal
 
 img
 	width: 100%		
@@ -35,11 +39,11 @@ h2
 
 .wrapper
 	width: 70vw
-	margin: 80px auto
+	margin: 80px auto 0
 
 .btn
 	display: inline-block
-	margin: 40px 0
+	margin: 20px 0 0
 	padding: 10px 20px
 	font-size: 0.65em
 	text-transform: uppercase
@@ -117,20 +121,40 @@ header
 			margin-bottom: 15px
 			font-size: .9em
 
+
 ////////////////////////////////////////////////
 // 3 section #sec-3
 ////////////////////////////////////////////////
-#sec-3
+#sec-3	
 	color: $dark-txt
 	.wrapper			
 		p
 			margin-bottom: 15px		
 		.item-descr
 			font-size: .9em	
-			padding: 0 10px
+			padding: 0 10px			
 			h3
 				margin: 10px 0	
 
-
+////////////////////////////////////////////////
+// 4 section #sec-4
+////////////////////////////////////////////////
+#sec-4
+	text-align: center	
+	background-image: url("../img/sec4_bg.jpg")
+	background-size: cover
+	background-position: center	
+	.row		
+		height: 360px
+		h2
+			font-weight: normal
+			color: #fff		
+			margin: 0
+			span
+				font-size: 1.4em
+				line-height: 2em
+				font-weight: 900	
+				color: #fff				
+			
 
 
