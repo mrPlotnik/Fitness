@@ -61,14 +61,14 @@ h3
 .wrapper
 	width: 70vw
 	margin: 6em auto 0
-	.descr
-		font-size: .9em
-		color: #888
-		margin-bottom: 3em
-	.item-descr
-		padding: 0 .6em
-		h3
-			margin: .8em 0 .5em
+.descr
+	font-size: .9em
+	color: #888
+	margin-bottom: 3em
+.item-descr
+	padding: 0 .6em
+	h3
+		margin: .8em 0 .5em
 			
 // Кнопки
 .btn
@@ -111,17 +111,33 @@ header
 				animation-iteration-count: infinite	
 
 ////////////////////////////////////////////////
-// 2 section #sec-2
+// 2 section #sec-2-1
 ////////////////////////////////////////////////
-#sec-2
+#sec-2-1
 	color: $dark-txt
 	.wrapper	
 		.img
 			display: flex
 			align-items: center
-			height: 100%		
-		p
-			margin-bottom: 15px
+			height: 100%	
+	
+////////////////////////////////////////////////
+// 2 section #sec-2-2
+////////////////////////////////////////////////
+#sec-2-2
+	text-align: center
+	background-color: $bg-dark	
+	.img-container
+		border: 2px solid $accent
+		border-radius: 50%
+		margin: 1em 0
+		+mt(.25s)
+		&:hover
+			border: 5px solid $accent
+		.circle		
+			border-radius: 50%	
+	h3, h2
+		color: $white-txt		
 
 ////////////////////////////////////////////////
 // 3 section #sec-3
