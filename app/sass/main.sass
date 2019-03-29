@@ -1,19 +1,26 @@
 @import 'bourbon'     // Миксины для SASS
 @import "font"
-@import "libs"        // Библиотеки
 @import "vars"        // Переменные
-        
+@import "libs"        // Библиотеки
+			
 
 // Отключение предупреждений бурбона в консоли
-// $output-bourbon-deprecation-warnings: false
+$output-bourbon-deprecation-warnings: false
 
 *
 	margin: 0
 	padding: 0
 	box-sizing: border-box
+	text-decoration: none !important	
+	user-select: none // Пользователю запрещено выделять элемент
+	&:active, &:focus
+		outline: none
+
+html
+	font-size: 14px
 
 body
-	font-size: 14px	
+	font-size: 14px
 	line-height: 1.3em
 	font-family: 'My-font', sans-serif;
 	color: $white-txt
@@ -21,81 +28,68 @@ body
 	min-width: 320px
 
 img
-	width: 100%		
+	width: 100%
 
 a	
 	text-decoration: none
 
+// Заголовки
 h1, h2, h3
 	text-transform: uppercase
-	font-weight: bold
-	line-height: 1.2em
+	font-weight: bold	
 	span
 		color: $accent
 h1		
 	font-size: 3.5em
-	margin-left: -3px			
+	margin-left: -.1em		
 h2		
-	font-size: 1.8em
-	margin-bottom: 10px	
+	font-size: 1.8em	
+	margin: 0 0 1em
 	color: $dark-txt
+	span						
+		font-weight: 900	
+h3		
+	font-size: 1.2em
+	margin-bottom: .6em	
+	color: $dark-txt	
 
 .logo	
 	display: flex		
-	width: 7em		
+	width: 5em
 	align-items: center
 
 .wrapper
 	width: 70vw
 	margin: 6em auto 0
 	.descr
-		font-size: .8em
+		font-size: .9em
 		color: #888
 		margin-bottom: 3em
-
+	.item-descr
+		padding: 0 .6em
+		h3
+			margin: .8em 0 .5em
+			
+// Кнопки
 .btn
-	display: inline-block
-	margin: 1.5em 0 0
-	padding: 1em 2em
-	// font-size: .8em
-	text-transform: uppercase
-	letter-spacing: .1em
-	font-weight: 600	
-	background-color: $accent
-	color: #fff
-	&:hover
-		background-color: darken($accent,10%) 
+	font-size: .9em
+	font-weight: 600			
+	text-transform: uppercase		
 
 ////////////////////////////////////////////////
 // 1 section header .nav-bar
 ////////////////////////////////////////////////
 .nav-bar			
-	margin: 0 5vw	
-	padding: 1.5em 0 0
-	margin-bottom: 2em
+	position: absolute
 	text-transform: uppercase	
 	font-weight: 600	
-	justify-content: space-around	
-	.nav
-		font-size: .9em
-		width: 100%	
-		margin-left: 2em
-		ul	
-			line-height: 3em
-			margin-top: .2em
-			li				
-				list-style-type: none				
-				display: inline-block			
-				padding-left: 1em				
+	justify-content: space-around		
+	ul li				
+		list-style-type: none				
+		display: inline-block			
+		padding-left: 1em		
 	.nav-btn			
-		font-size: .9em
-		display: flex
-		align-items: center
-		white-space: nowrap		
-		a			
-			border: 2px solid #fff
-			padding: .5em
-			color: #fff
+		white-space: nowrap
 
 ////////////////////////////////////////////////
 // 1 section header
@@ -104,8 +98,9 @@ header
 	background-image: url("../img/bg1.jpg")
 	background-size: cover
 	background-position: center
-	height: 100vh	
-	.wrapper		
+	height: 100vh		
+	.wrapper	
+		margin: 0 auto	
 		p
 			margin: 1.5em 0
 			font-weight: 600
@@ -127,82 +122,57 @@ header
 			height: 100%		
 		p
 			margin-bottom: 15px
-			// font-size: .9em
-
 
 ////////////////////////////////////////////////
 // 3 section #sec-3
 ////////////////////////////////////////////////
-#sec-3	
-	color: $dark-txt
-	.item-descr		
-		padding: 0 10px			
-		h3
-			margin: 10px 0			
+#sec-3
+	color: $dark-txt	
 	.col
 		margin-bottom: 1em	
+	.btn
+		margin-bottom: 2em	
 
 ////////////////////////////////////////////////
 // 4 section #sec-4
+// 6 section #sec-6
 ////////////////////////////////////////////////
-#sec-4
-	text-align: center	
-	background-image: url("../img/sec4_bg.jpg")
+#sec-4, #sec-6
+	text-align: center		
 	background-size: cover
 	background-position: center	
 	.row		
-		height: 360px
-		h2
-			font-weight: normal
-			color: #fff		
-			margin: 0
-			span
-				font-size: 1.4em
-				line-height: 2em
-				font-weight: 900	
-				color: #fff				
+		height: 30em	
+	h2
+		font-weight: normal
+		color: #fff					 
+		span
+			font-size: 1.4em
+			color: #fff
+
+#sec-4	
+	background-image: url("../img/sec4_bg.jpg")
+
+#sec-6	
+	background-image: url("../img/sec6_bg.jpg")	
+						
 
 ////////////////////////////////////////////////
 // 5 section #sec-5
 ////////////////////////////////////////////////			
-#sec-5	
-	
+#sec-5
 	color: $dark-txt	
-	.item-descr		
-		padding: 0 10px	
+	.item-descr			
 		text-align: center
-
-		h3
-			margin: 5px 0	0
+		h3			
 			text-transform: capitalize
 		span
 			font-size: .7em
 			text-transform: uppercase	
 			font-weight: 900
 			color: $accent
-		p
-			font-size: .9em
-			margin-top: 10px	
-
-////////////////////////////////////////////////
-// 6 section #sec-6
-////////////////////////////////////////////////
-#sec-6
-	text-align: center	
-	background-image: url("../img/sec6_bg.jpg")
-	background-size: cover
-	background-position: center	
-	.row		
-		height: 360px
-		h2
-			font-size: 1em
-			font-weight: 900
-			color: #fff		
-			margin: 0
-			span
-				font-size: 2em				
-				line-height: 2em
-				color: #fff		
+		p			
+			margin-top: .8em	
 
 ////////////////////////////////////////////////
 // 7 section #sec-7

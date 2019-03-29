@@ -1,25 +1,26 @@
 header
 
 	//- nav-bar start
-	.nav-bar.m-15.d-flex.justify-content-between
-		.logo
+	.nav-bar.d-flex.w-100.px-5.py-3.justify-content-between
+		.logo.flex-shrink-0
 			img(src="img/logo.png", alt="logo")
-		.nav.m15
-			ul
+		.w-100.d-flex.align-items-center.justify-content-center
+			ul.m-0.d-none.d-sm-flex
 				li home
 				li about us
 				li page
 				li blog
 				li contact
-		.nav-btn.m-15
-			a(href="#") chose plan
+		.nav-btn
+			button.btn.btn-outline-light(type='button') Выбрать план
 	//- nav-bar end
 
-	.wrapper
-		h1 Сделай свое тело 
-			br
-			span красивым
-		p.animated первые 7 дней 
-			span.animated.flash бесплатно
-
-		a.btn(href="#") онлайн запись
+	.container.h-100
+		.row.align-items-center.h-100
+			.wrapper
+				h1 Сделай свое тело 
+					br
+					span красивым
+				p первые 7 дней 
+					span.animated.flash бесплатно
+				button.btn.btn-primary(type='button') онлайн запись
