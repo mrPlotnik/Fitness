@@ -9,19 +9,13 @@ var
 	uglify        = require('gulp-uglify'),
 	imagemin 			= require('gulp-imagemin'), // Оптимизируем картинки
 	cache         = require('gulp-cache'), // Подключаем библиотеку кеширования
+	del         	= require('del'), // Подключаем библиотеку для  удаления файлов и папок
+	ftp 					= require('vinyl-ftp'),
+	gutil 				= require('gulp-util'),
 
-	
 	reload				= browserSync.reload; 
 
 
-//-------------------------------------------	
-// Скопировать шрифты в директории dist
-// и преобразовать CSS в SCSS
-// Достаточно запустить один раз
-//-------------------------------------------	
-gulp.task('beforeTheStart', ['cssToScss', 'copyFont'], () => {
-	console.log('Done! You can work. All is ready :)');
-});
 
 //-------------------------------------------
 // Копируем шрифты
@@ -35,8 +29,7 @@ gulp.task('copyFont', () => {
 // Компилируем CSS в SCSS
 //-------------------------------------------		
 gulp.task('cssToScss', () => {
-	return gulp.src([
-		'app/libs/bootstrap/dist/css/bootstrap-grid.min.css',
+	return gulp.src([		
 		// 'app/libs/magnific-popup/dist/magnific-popup.css',
 		'app/libs/animate.css/animate.min.css'
 		])
@@ -97,12 +90,55 @@ gulp.task('browser-sync', () => {
 	});
 });
 
+//---------------------------------------------
+// Vynil-FTP. Деплой на сервер
+//---------------------------------------------
+gulp.task( 'deploy', () => {
+
+	var conn = ftp.create( {
+		host:     'files.000webhost.com',
+		port:     '21',
+		user:     'plotnik-webdev',
+		password: 'm1Id%AMHojwximHcy^df', // Do not forget to delete
+		parallel: 100,
+		maxConnections: 5,
+		log:      gutil.log
+	} );
+
+	var globs = [	'dist/**'	];
+
+	return gulp.src( globs, { base: 'dist', buffer: false } )
+		// .pipe( conn.newer( 'public_html/' ) ) // only upload newer files
+		.pipe( conn.dest( 'public_html/fitness' ) );
+} );  
+
+//----------------------------------------------
+// Очистка директории
+//----------------------------------------------
+gulp.task('removedist', () => {
+	return del.sync([	'dist/*' ]); 
+});
+
+//-------------------------------------------	
+// Скопировать шрифты в директории dist
+// и преобразовать CSS в SCSS
+// Достаточно запустить один раз
+//-------------------------------------------	
+gulp.task('beforeTheStart', ['cssToScss', 'copyFont'], () => {
+	console.log('Done! You can work. All is ready :)');
+});
+
+//----------------------------------------------
+// Наблюдаем за изменениями, компилируем, перезагружаем
+//----------------------------------------------
 gulp.task('watch', ['pug', 'sass', 'js', 'imagemin', 'browser-sync'], () => {
 	gulp.watch('app/pug/**/*.pug', ['pug']);
 	gulp.watch('app/sass/*.sass', ['sass']);
 	gulp.watch('app/js/*.js', ['js']);
 });	
 
-
-gulp.task('default', ['watch']);
+//----------------------------------------------
+// По умолчанию (при запуске)
+//----------------------------------------------
+gulp.task('default', ['removedist','beforeTheStart', 'watch']);
 
