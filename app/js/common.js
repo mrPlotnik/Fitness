@@ -1,17 +1,16 @@
 $(document).ready(function() {
 
-	resize();
-
-	function resize() {
-		$("#sec-4 .item-descr h3").height('auto').equalHeights();	
-		$("#sec-4 .item-descr p").height('auto').equalHeights();	
-		// $("#sec-2-2 h3").height('auto').equalHeights();	
-		// $("#sec-2-2 .img-container p").height('auto').equalHeights();	
-		
-	};
+	resize();	
 
 	$(window).resize(function() {
 		resize();
 	});
+
+	function resize() {
+		$("#sec-4 .item-descr h3").height('auto').equalHeights();	
+		$("#sec-4 .item-descr p").height('auto').equalHeights();	
+	};
+
+	$("a[href*='#']").mPageScroll2id();
 
 }); 
