@@ -9,13 +9,14 @@ section#sec-8
 							.group
 								.row
 									.col-6
-										input(type="text" required)
-										label Имя
+										input(type="text" id="name" required)
+										label(for="name") Имя
 									.col-6
-										input(type="text" required)
-										label E-mail
+										input(type="email" id="email" required)
+										label(for="email") E-mail
 									.col-12
-										button.btn.btn-outline-primary(type='button')  подписаться
+										button.btn.btn-outline-primary(type='submit')  подписаться
+					#msgSubmit 123
 				.social.col-12.col-sm-12.col-md-6
 					.container
 						.row

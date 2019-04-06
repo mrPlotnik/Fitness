@@ -15,7 +15,13 @@ var
 
 	reload				= browserSync.reload; 
 
-
+//-------------------------------------------
+// Копируем php
+//-------------------------------------------
+gulp.task('php', () => {	
+	return gulp.src('app/*.php')		
+	.pipe(gulp.dest('dist'));
+});	
 
 //-------------------------------------------
 // Копируем шрифты
@@ -117,7 +123,7 @@ gulp.task( 'deploy', () => {
 // Очистка директории
 //----------------------------------------------
 gulp.task('removedist', () => {
-	return del.sync([	'dist/*' ]); 
+	return del.sync('dist/*'); 
 });
 
 //-------------------------------------------	
@@ -132,10 +138,11 @@ gulp.task('beforeTheStart', ['cssToScss', 'copyFont'], () => {
 //----------------------------------------------
 // Наблюдаем за изменениями, компилируем, перезагружаем
 //----------------------------------------------
-gulp.task('watch', ['pug', 'sass', 'js', 'imagemin', 'browser-sync'], () => {
+gulp.task('watch', ['pug', 'sass', 'js', 'php', 'imagemin', 'browser-sync'], () => {
 	gulp.watch('app/pug/**/*.pug', ['pug']);
 	gulp.watch('app/sass/*.sass', ['sass']);
 	gulp.watch('app/js/*.js', ['js']);
+	gulp.watch('app/*.php', ['php']);
 });	
 
 //----------------------------------------------
