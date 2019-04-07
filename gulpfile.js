@@ -5,7 +5,10 @@ var
 	plumber 			= require('gulp-plumber'),
 	sass 					= require('gulp-sass'),
 	cssToScss 		= require('gulp-css-scss'),
+	autoprefixer 	= require('gulp-autoprefixer'), // Подключаем библиотеку для автоматического добавления префиксов
+	csso 					= require('gulp-csso'), // Подключаем отличный CSS компрессор
 	concat        = require('gulp-concat'),
+	rename 				= require('gulp-rename'), // Подключаем библиотеку для переименования файлов
 	uglify        = require('gulp-uglify'),
 	imagemin 			= require('gulp-imagemin'), // Оптимизируем картинки
 	cache         = require('gulp-cache'), // Подключаем библиотеку кеширования
@@ -14,34 +17,6 @@ var
 	gutil 				= require('gulp-util'),
 
 	reload				= browserSync.reload; 
-
-//-------------------------------------------
-// Копируем php
-//-------------------------------------------
-gulp.task('php', () => {	
-	return gulp.src('app/*.php')		
-	.pipe(gulp.dest('dist'));
-});	
-
-//-------------------------------------------
-// Копируем шрифты
-//-------------------------------------------
-gulp.task('copyFont', () => {
-	return gulp.src('app/fonts/*')		
-	.pipe(gulp.dest('dist/fonts'));
-});
-
-//-------------------------------------------
-// Компилируем CSS в SCSS
-//-------------------------------------------		
-gulp.task('cssToScss', () => {
-	return gulp.src([		
-		// 'app/libs/magnific-popup/dist/magnific-popup.css',
-		'app/libs/animate.css/animate.min.css'
-		])
-	.pipe(cssToScss())
-	.pipe(gulp.dest('app/libs/cssToScss'));
-});	
 
 gulp.task('pug', () => {
 	return gulp.src(
@@ -80,16 +55,27 @@ gulp.task('js', () => {
 	.pipe(reload({ stream: true }))
 });
 
+//-------------------------------------------
+// Копируем php
+//-------------------------------------------
+gulp.task('php', () => {	
+	return gulp.src('app/*.php')		
+	.pipe(gulp.dest('dist'));
+});	
+
 //----------------------------------------------
 // Оптимизация, минификация изображений
 //----------------------------------------------
-gulp.task('imagemin', () =>
+gulp.task('imagemin', () => {
 	gulp.src('app/img/**/*')	
 		.pipe(cache(imagemin()) // Cache Images
-		.pipe(gulp.dest('dist/img/'))
-));
+			.pipe(gulp.dest('dist/img/'))
+		)	
+});
 
-
+//---------------------------------------------
+// Browser-sync
+//---------------------------------------------
 gulp.task('browser-sync', () => { 
 	browserSync({ 
 		server: {baseDir: 'dist'},
@@ -110,30 +96,33 @@ gulp.task( 'deploy', () => {
 		parallel: 100,
 		maxConnections: 5,
 		log:      gutil.log
-	} );
+	});
 
 	var globs = [	'dist/**'	];
 
 	return gulp.src( globs, { base: 'dist', buffer: false } )
 		// .pipe( conn.newer( 'public_html/' ) ) // only upload newer files
 		.pipe( conn.dest( 'public_html/' ) );
-} );  
+	});  
 
-//----------------------------------------------
-// Очистка директории
-//----------------------------------------------
-gulp.task('removedist', () => {
-	return del.sync('dist/*'); 
+//-------------------------------------------
+// Копируем шрифты
+//-------------------------------------------
+gulp.task('copyFont', () => {
+	return gulp.src('app/fonts/*')		
+	.pipe(gulp.dest('dist/fonts'));
 });
 
-//-------------------------------------------	
-// Скопировать шрифты в директории dist
-// и преобразовать CSS в SCSS
-// Достаточно запустить один раз
-//-------------------------------------------	
-gulp.task('beforeTheStart', ['cssToScss', 'copyFont'], () => {
-	console.log('Done! You can work. All is ready :)');
-});
+//-------------------------------------------
+// Компилируем CSS в SCSS
+//-------------------------------------------		
+gulp.task('cssToScss', () => {
+	return gulp.src([				
+		'app/libs/animate.css/animate.min.css'
+		])
+	.pipe(cssToScss())
+	.pipe(gulp.dest('app/libs/cssToScss'));
+});	
 
 //----------------------------------------------
 // Наблюдаем за изменениями, компилируем, перезагружаем
@@ -144,6 +133,21 @@ gulp.task('watch', ['pug', 'sass', 'js', 'php', 'imagemin', 'browser-sync'], () 
 	gulp.watch('app/js/*.js', ['js']);
 	gulp.watch('app/*.php', ['php']);
 });	
+
+//-------------------------------------------	
+// Скопировать шрифты в директорию dist,
+// преобразовать CSS в SCSS
+//-------------------------------------------	
+gulp.task('beforeTheStart', ['cssToScss', 'copyFont'], () => {
+	console.log('');
+});
+
+//----------------------------------------------
+// Очистка директории
+//----------------------------------------------
+gulp.task('removedist', () => {
+	return del.sync('dist/*'); 
+});
 
 //----------------------------------------------
 // По умолчанию (при запуске)
