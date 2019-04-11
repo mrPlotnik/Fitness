@@ -1,6 +1,7 @@
 <?php
 $name = $_POST["name"];
 $email = $_POST["email"];
+$phone = $_POST["phone"];
 
 $EmailTo = "alenakrivohiza@gmail.com";
 $Subject = "Fitness. Новый клиент!";
@@ -12,6 +13,10 @@ $Body .= "n";
 
 $Body .= "Email: ";
 $Body .= $email;
+$Body .= "n";
+
+$Body .= "Phone: ";
+$Body .= $phone;
 $Body .= "n";
 
 // отправляем электронную почту

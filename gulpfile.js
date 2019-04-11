@@ -48,6 +48,7 @@ gulp.task('js', () => {
 		'app/libs/jQuery.equalHeights/jquery.equalheights.min.js',
 		'app/libs/page-scroll-to-id/jquery.malihu.PageScroll2id.js',
 		'app/libs/bootstrap-validator/dist/validator.js',
+		'app/js/form.js',
 		'app/js/common.js', // Always at the end
 		])
 	.pipe(concat('scripts.min.js'))
@@ -60,8 +61,8 @@ gulp.task('js', () => {
 // Копируем php
 //-------------------------------------------
 gulp.task('php', () => {	
-	return gulp.src('app/*.php')		
-	.pipe(gulp.dest('dist'));
+	return gulp.src('app/php/*.php')		
+	.pipe(gulp.dest('dist/php/'));
 });	
 
 //----------------------------------------------
