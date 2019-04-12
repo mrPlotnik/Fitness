@@ -217,37 +217,34 @@ header
 	background-color: $bg-dark	
 	h3
 		color: $white-txt
-	form		
-		.group
-			position: relative	
-			width: 100%			 
-			input
-				width: 100%
-				height: 2.8em
-				margin-top: 1.2em
-				border: 1px solid $gray-800
-				background: $gray-900
-				padding: .5em 1em	
-				font-size: 1em
-				color: $white-txt
-				+mt(.5s)
-				&:hover				
-					border: 1px solid $gray-600	
-				&:focus ~ label, &:valid ~ label
-					top: -.5em					
-					color: $accent
-					+mt(.3s)						
-			label
-				font-size: .9em
-				font-weight: normal
-				position: absolute
-				pointer-events: none
-				left: 2em
-				top: 2.2em		
-			.help-block
-				height: 1em
-				margin-top: .6em	
-				color: $danger					
+	form	
+		input
+			width: 100%
+			height: 2.8em
+			margin-top: 1.2em
+			border: 1px solid $gray-800
+			background: $gray-900
+			padding: .5em 1em	
+			font-size: 1em
+			color: $white-txt
+			+mt(.5s)
+			&:hover				
+				border: 1px solid $gray-600	
+			&:focus ~ label, &:valid ~ label
+				top: -.5em					
+				color: $accent
+				+mt(.3s)						
+		label
+			font-size: .9em
+			font-weight: normal
+			position: absolute
+			pointer-events: none
+			left: 2em
+			top: 2.2em		
+		.help-block
+			height: 1em
+			margin-top: .6em	
+			color: $danger					
 
 	.social, .gallery		
 		margin-bottom: 1em			
