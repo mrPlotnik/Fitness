@@ -184,7 +184,7 @@ header
 		span
 			font-size: 1.4em
 			color: #fff
-			font-weight: normal
+			// font-weight: normal
 
 #sec-5	
 	background-image: url("../img/sec5_bg.jpg")
@@ -244,14 +244,22 @@ header
 		.help-block
 			height: 1em
 			margin-top: .6em	
-			color: $danger					
+			color: $danger		
+
+		.label-not-active
+			+mt(.3s)
+
+		.label-active
+			// top: 2.2em
+			top: -.5em	!important				
+			color: $accent
+			+mt(.3s)
+
 
 	.social, .gallery		
 		margin-bottom: 1em			
 		
-	.social	
-		.logo
-			// margin-bottom: 1em			
+	.social
 		.icons
 			img
 				width: 2em
