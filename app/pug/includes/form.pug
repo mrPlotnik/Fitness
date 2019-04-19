@@ -1,0 +1,25 @@
+.col.pb-5
+	h3 оставьте заявку на бесплатную тренировку
+	form#form
+		.row
+
+			.form-group.col-4
+				input.form-control(type="text" id="name" data-error="Введите Имя" required)
+				.help-block.with-errors
+				label.label-not-active(for="name") Имя
+
+			.form-group.col-4
+				input.form-control(type="tel" id="phone" data-error="Неверный номер" required)
+				.help-block.with-errors
+				label.label-not-active(for="phone") Телефон
+
+			.form-group.col-4
+				input.form-control(type="email" id="email" data-error="Неверный E-mail адрес" required)
+				.help-block.with-errors
+				label.label-not-active(for="email") E-mail
+
+			.d-flex.w-100.align-items-center
+				.col-auto
+					button.btn.btn-outline-primary(type='submit') записаться на занятие
+				.col-auto
+					#msgSubmit.invisible

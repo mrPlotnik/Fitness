@@ -2,31 +2,9 @@ section#sec-8.pb-0
 	.container.d-flex
 		.wrapper
 			.row
-				.col.pb-5
-					h3 оставьте заявку на бесплатную тренировку
-					form#form
-						.row
 
-							.form-group.col-4
-								input.form-control(type="text" id="name" data-error="Введите Имя" required)
-								.help-block.with-errors
-								label(for="name") Имя
+				include ../includes/form.pug
 
-							.form-group.col-4
-								input.form-control(type="tel" id="phone" data-error="Неверный номер" required)
-								.help-block.with-errors
-								label(for="phone") Телефон
-
-							.form-group.col-4
-								input.form-control(type="email" id="email" data-error="Неверный E-mail адрес" required)
-								.help-block.with-errors
-								label(for="email") E-mail
-
-							.d-flex.w-100.align-items-center
-								.col-auto
-									button.btn.btn-outline-primary(type='submit') записаться на занятие
-								.col-auto
-									#msgSubmit.invisible
 			.row
 				.social.col-12.col-sm-12.col-md-6
 					.row.mb-3.align-items-center.justify-content-between
@@ -48,6 +26,7 @@ section#sec-8.pb-0
 										img.img-fluid(src="../img/icons/instagram.svg", alt="Facebook")
 										img.img-fluid(src="../img/icons/instagram.svg", alt="Instagram")
 										img.img-fluid(src="../img/icons/instagram.svg", alt="VK")
+
 				.col-12.col-sm-12.col-md-6
 					.container
 						.row

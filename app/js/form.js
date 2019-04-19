@@ -3,14 +3,15 @@
 // Этот фрагмент кода проверяет, нашел ли Bootstrap Validator проблемы и остановил ли работу кода. 
 $("#form").validator().on("submit", (function(event) {
 		if (event.isDefaultPrevented()) {	// обработка ошибки формы...	
-			formError();
+			formError(); // вызываем функцию formError()
 			submitMSG(false, "Заполните всю форму!");
 		} else { // если все в порядке! 
 			event.preventDefault(); // Останавливает отправку данных формы при обновлении страницы без выбора действия в форме.
-			submitForm(); // вызывает функцию submitForm(), которая отправляет данные формы в php/form.php
+			submitForm(); // вызывает функцию submitForm()
 		}
 }));
 
+// Функция, которая отправляет данные формы в php/form.php
 function submitForm() {
 	// инициируем переменную с содержимым формы
 	var name = $("#name").val();
@@ -42,34 +43,36 @@ function formError(){
 	});
 };
 
-function submitMSG(valid, msg){
-		var msgClasses;
+function submitMSG(valid, msg) {
+	var msgClasses;
+	
 	if(valid){
 		msgClasses = "tada animated text-success text-uppercase";
-	} else {
+	}
+	else {
 		msgClasses = "w-100 text-danger text-uppercase";
 	}
+
 	$("#msgSubmit").removeClass().addClass(msgClasses).text(msg);
-}
+};
 
 
 	// Поведение label
 	$("input").blur( function() {
 
-		var findLabel 	= $(this).parent().find("label"),
-				inputValue	= $(this).val(),
-				active 			= "label-active",
-				notActive 	= "label-not-active";				
+		var findLabel 	= $(this).parent().find("label"), // ищем связанный label
+				inputValue	= $(this).val(), // узнаем input пустой
+				active 			= "label-active", // класс
+				notActive 	= "label-not-active";	// класс
 
-		if(inputValue == '') {
-			findLabel.addClass(notActive);
-			findLabel.removeClass(active);	
+		if(inputValue == '') { // если
+			findLabel.addClass(notActive); // добавляем класс
+			findLabel.removeClass(active); // удаляем класс	
 			console.log(inputValue + " notActive"); // Удалить потом
-		}   
-	 
-		else {
-			findLabel.addClass(active);
-			findLabel.removeClass(notActive);
+		}
+		else { // иначе
+			findLabel.addClass(active); // добавляем класс
+			findLabel.removeClass(notActive); // удаляем класс
 			console.log(inputValue + " active"); // Удалить потом
 		}
 		 

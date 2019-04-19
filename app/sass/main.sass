@@ -215,6 +215,7 @@ header
 ////////////////////////////////////////////////
 #sec-8
 	background-color: $bg-dark	
+	// form start
 	h3
 		color: $white-txt
 	form	
@@ -227,7 +228,6 @@ header
 			padding: .5em 1em	
 			font-size: 1em
 			color: $white-txt
-			+mt(.5s)
 			&:hover				
 				border: 1px solid $gray-600	
 			&:focus ~ label, &:valid ~ label
@@ -250,11 +250,10 @@ header
 			+mt(.3s)
 
 		.label-active
-			// top: 2.2em
 			top: -.5em	!important				
 			color: $accent
 			+mt(.3s)
-
+ // form end
 
 	.social, .gallery		
 		margin-bottom: 1em			
