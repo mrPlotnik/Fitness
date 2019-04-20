@@ -1,16 +1,15 @@
 @import 'bourbon'     // Миксины для SASS
 @import "font"				// Шрифты
 @import "vars"        // Переменные
-@import "libs"        // Библиотеки
-			
+@import "libs"        // Библиотеки			
 
-// Отключение предупреждений бурбона в консолиииииииdcdcттт
+// Отключение предупреждений бурбона в консоли
 $output-bourbon-deprecation-warnings: false
 
 *
-	margin: 0
-	padding: 0
-	box-sizing: border-box
+	// margin: 0
+	// padding: 0
+	// box-sizing: border-box
 	text-decoration: none !important	
 	user-select: none // Пользователю запрещено выделять элемент
 	&:active, &:focus
@@ -47,7 +46,7 @@ h1
 	margin-left: -.1em		
 h2		
 	font-size: 1.8em	
-	margin: 0 0 1em
+	// margin: 0 0 1em
 	color: $dark-txt
 	line-height: 2em
 	span						
@@ -79,10 +78,20 @@ h3
 	text-transform: uppercase		
 
 // Логотип
-.logo	
-	display: flex		
-	width: 5em
+.logo-container	
 	align-items: center
+	font-weight: 600
+	text-transform: uppercase
+	a
+		color: $white-txt
+		.logo
+			font-size: 1.3em						
+			+mt(.3s)
+			span
+				color: $accent
+		&:hover
+			.logo
+				color: $accent
 
 ////////////////////////////////////////////////
 // 1 section header .nav-bar
@@ -133,12 +142,7 @@ header
 // 2 section #sec-2
 ////////////////////////////////////////////////
 #sec-2
-	color: $dark-txt
-	.wrapper	
-		.img
-			display: flex
-			align-items: center
-			height: 100%	
+	color: $dark-txt	
 	
 ////////////////////////////////////////////////
 // 2 section #sec-3
@@ -167,6 +171,8 @@ header
 		margin-bottom: 1em	
 	.btn
 		margin-bottom: 2em	
+	img
+		border-radius: .25em	
 
 ////////////////////////////////////////////////
 // 5 section #sec-5
@@ -183,15 +189,13 @@ header
 		color: #fff				
 		span
 			font-size: 1.4em
-			color: #fff
-			// font-weight: normal
+			color: #fff			
 
 #sec-5	
 	background-image: url("../img/sec5_bg.jpg")
 
 #sec-7	
-	background-image: url("../img/sec7_bg.jpg")	
-						
+	background-image: url("../img/sec7_bg.jpg")							
 
 ////////////////////////////////////////////////
 // 6 section #sec-6
@@ -215,6 +219,7 @@ header
 ////////////////////////////////////////////////
 #sec-8
 	background-color: $bg-dark	
+
 	// form start
 	h3
 		color: $white-txt
