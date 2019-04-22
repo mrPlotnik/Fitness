@@ -7,9 +7,6 @@
 $output-bourbon-deprecation-warnings: false
 
 *
-	// margin: 0
-	// padding: 0
-	// box-sizing: border-box
 	text-decoration: none !important	
 	user-select: none // Пользователю запрещено выделять элемент
 	&:active, &:focus
@@ -93,21 +90,17 @@ h3
 			.logo
 				color: $accent
 
-////////////////////////////////////////////////
-// 1 section header .nav-bar
-////////////////////////////////////////////////
-.nav-bar			
-	position: absolute
+
+//.nav-bar
+.nav-bar
 	text-transform: uppercase	
 	font-weight: 600	
-	justify-content: space-around		
+	justify-content: space-around
 	ul li	
 		list-style-type: none				
 		display: inline-block	
 		a
-			color: $white-txt
-			border-left: 1px solid #fff
-			padding: 0 1em
+			color: $white-txt			
 			+mt(.25s)			
 			&:hover
 				color: $accent
@@ -119,8 +112,16 @@ h3
 		&:hover
 			color: $dark-txt
 
+// header .nav-bar
+header
+	.nav-bar	
+		position: absolute
+		ul li	a
+			border-left: 1px solid #fff
+			padding: 0 1em
+		
 ////////////////////////////////////////////////
-// 1 section header
+// header
 ////////////////////////////////////////////////
 header
 	background-image: url("../img/bg1.jpg")
@@ -139,13 +140,13 @@ header
 				animation-iteration-count: infinite	
 
 ////////////////////////////////////////////////
-// 2 section #sec-2
+// #sec-2
 ////////////////////////////////////////////////
 #sec-2
 	color: $dark-txt	
 	
 ////////////////////////////////////////////////
-// 2 section #sec-3
+// #sec-3
 ////////////////////////////////////////////////
 #sec-3
 	text-align: center
@@ -163,7 +164,7 @@ header
 		color: $white-txt		
 
 ////////////////////////////////////////////////
-// 4 section #sec-4
+// #sec-4
 ////////////////////////////////////////////////
 #sec-4
 	color: $dark-txt	
@@ -175,8 +176,7 @@ header
 		border-radius: .25em	
 
 ////////////////////////////////////////////////
-// 5 section #sec-5
-// 7 section #sec-7
+// #sec-5, #sec-7
 ////////////////////////////////////////////////
 #sec-5, #sec-7
 	text-align: center		
@@ -198,7 +198,7 @@ header
 	background-image: url("../img/sec7_bg.jpg")							
 
 ////////////////////////////////////////////////
-// 6 section #sec-6
+// #sec-6
 ////////////////////////////////////////////////			
 #sec-6
 	color: $dark-txt	
@@ -215,12 +215,10 @@ header
 			margin-top: .8em	
 
 ////////////////////////////////////////////////
-// 8 section #sec-8
+// #sec-form
 ////////////////////////////////////////////////
-#sec-8
-	background-color: $bg-dark	
-
-	// form start
+#sec-form
+	background-color: $bg-dark		
 	h3
 		color: $white-txt
 	form	
@@ -258,17 +256,20 @@ header
 			top: -.5em	!important				
 			color: $accent
 			+mt(.3s)
- // form end
 
-	.social, .gallery		
-		margin-bottom: 1em			
-		
-	.social
-		.icons
-			img
-				width: 2em
-				margin: 0 .3em		
-		p
-			vertical-align: center
+////////////////////////////////////////////////
+// footer
+////////////////////////////////////////////////
+footer	
+	background-color: #0f0e11		
+	.icons			
+		img
+			width: 1.5em
+			margin: 0 .3em		
+
+	.nav-bar	
+		ul li
+			display: block
+			margin-bottom: .3em	
 
 @import "media" 
