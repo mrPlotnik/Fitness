@@ -20,8 +20,8 @@ var
 
 gulp.task('pug', () => {
 	return gulp.src(
-		'app/pug/index.pug'
-		)
+			'app/pug/index.pug',			
+			)
 	.pipe(plumber())
 	.pipe(pug({pretty: true}))
 	.pipe(gulp.dest('dist/'))

@@ -67,13 +67,11 @@ function submitMSG(valid, msg) {
 
 		if(inputValue == '') { // если
 			findLabel.addClass(notActive); // добавляем класс
-			findLabel.removeClass(active); // удаляем класс	
-			console.log(inputValue + " notActive"); // Удалить потом
+			findLabel.removeClass(active); // удаляем класс				
 		}
 		else { // иначе
 			findLabel.addClass(active); // добавляем класс
-			findLabel.removeClass(notActive); // удаляем класс
-			console.log(inputValue + " active"); // Удалить потом
+			findLabel.removeClass(notActive); // удаляем класс			
 		}
 		 
 	});	

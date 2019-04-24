@@ -215,10 +215,45 @@ header
 			margin-top: .8em	
 
 ////////////////////////////////////////////////
+// footer
+////////////////////////////////////////////////
+footer	
+	background-color: #0f0e11		
+	.icons			
+		img
+			width: 1.5em
+			margin: 0 .3em		
+
+	.nav-bar	
+		ul li
+			display: block
+			line-height: 1.5em
+			margin-bottom: .3em	
+
+	.popup-gallery		
+		img
+			width: 4em
+			padding: 2px
+
+
+////////////////////////////////////////////////
 // #sec-form
 ////////////////////////////////////////////////
 #sec-form
-	background-color: $bg-dark		
+	position: fixed
+	width: 100vw
+	height: 100vh	
+	z-index: 2
+	right: 0
+	top: 0
+	display: none		
+	background-color: #000000bb	
+	img
+		width: 2em
+	.container
+		border: solid 1px $accent
+		border-radius: 4px
+		background-color: #000000dd		
 	h3
 		color: $white-txt
 	form	
@@ -257,25 +292,7 @@ header
 			color: $accent
 			+mt(.3s)
 
-////////////////////////////////////////////////
-// footer
-////////////////////////////////////////////////
-footer	
-	background-color: #0f0e11		
-	.icons			
-		img
-			width: 1.5em
-			margin: 0 .3em		
-
-	.nav-bar	
-		ul li
-			display: block
-			line-height: 1.5em
-			margin-bottom: .3em	
-
-	.popup-gallery		
-		img
-			width: 4em
-			padding: 2px
+.mfp-close
+	color: #fff	!important			
 
 @import "media" 

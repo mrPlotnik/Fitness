@@ -1,29 +1,37 @@
-section#sec-form.pb-0
-	.container
+section#sec-form.align-items-center
+	.container.pb-5
+
+		.row.justify-content-end
+			.col-auto.p-2
+				btn.close(href="#")
+					img(src="img/icons/fb.svg", alt="")
+
 		.wrapper
+
 			.row
-				.col.pb-5
+				.col-auto
 					h3 оставьте заявку на бесплатную тренировку
-					form#form
-						.row
+			
+			form#form
 
-							.form-group.col-12.col-md-6.col-lg-4
-								input.form-control(type="text" id="name" data-error="Введите Имя" required)
-								.help-block.with-errors
-								label.label-not-active(for="name") Имя
+				.row
+					.form-group.col-12.col-md-6.col-lg-4
+						input.form-control(type="text" id="name" data-error="Введите Имя" required)
+						.help-block.with-errors
+						label.label-not-active(for="name") Имя
 
-							.form-group.col-12.col-md-6.col-lg-4
-								input.form-control(type="tel" id="phone" data-error="Неверный номер" required)
-								.help-block.with-errors
-								label.label-not-active(for="phone") Телефон
+					.form-group.col-12.col-md-6.col-lg-4
+						input.form-control(type="tel" id="phone" data-error="Неверный номер" required)
+						.help-block.with-errors
+						label.label-not-active(for="phone") Телефон
 
-							.form-group.col-12.col-md-6.col-lg-4
-								input.form-control(type="email" id="email" data-error="Неверный E-mail адрес" required)
-								.help-block.with-errors
-								label.label-not-active(for="email") E-mail
+					.form-group.col-12.col-md-6.col-lg-4
+						input.form-control(type="email" id="email" data-error="Неверный E-mail адрес" required)
+						.help-block.with-errors
+						label.label-not-active(for="email") E-mail
 
-							.d-flex.w-100.align-items-center
-								.col-auto
-									button.btn.btn-outline-primary(type='submit') записаться на занятие
-								.col-auto
-									#msgSubmit.invisible
+					.d-flex.w-100.align-items-center
+						.col-auto
+							button.btn.btn-outline-primary(type='submit') записаться на занятие
+						.col-auto
+							#msgSubmit.invisible
