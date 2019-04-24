@@ -47,7 +47,8 @@ gulp.task('js', () => {
 		'app/libs/jquery/dist/jquery.min.js',
 		'app/libs/jQuery.equalHeights/jquery.equalheights.min.js',
 		'app/libs/page-scroll-to-id/jquery.malihu.PageScroll2id.js',
-		'app/libs/bootstrap-validator/dist/validator.js',
+		'app/libs/bootstrap-validator/dist/validator.min.js',
+		'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
 		'app/js/form.js',
 		'app/js/common.js', // Always at the end
 		])
@@ -120,7 +121,8 @@ gulp.task('copyFont', () => {
 //-------------------------------------------		
 gulp.task('cssToScss', () => {
 	return gulp.src([				
-		'app/libs/animate.css/animate.min.css'
+		'app/libs/animate.css/animate.min.css',
+		'app/libs/magnific-popup/dist/magnific-popup.css'
 		])
 	.pipe(cssToScss())
 	.pipe(gulp.dest('app/libs/cssToScss'));
