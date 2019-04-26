@@ -27,6 +27,9 @@ body
 section
 	padding: 3em 0
 
+#sec-4, #sec-6
+	text-align: center	
+
 // содержимое секций
 .wrapper
 	width: 70vw // 70% от ширины окна
@@ -35,7 +38,7 @@ section
 // Заголовки
 h1, h2, h3
 	text-transform: uppercase
-	font-weight: bold	
+	font-weight: bold		
 	span
 		color: $accent
 h1		
@@ -82,14 +85,13 @@ h3
 	a
 		color: $white-txt
 		.logo
-			font-size: 1.3em						
+			font-size: 1.2em						
 			+mt(.3s)
 			span
 				color: $accent
 		&:hover
 			.logo
 				color: $accent
-
 
 //.nav-bar
 .nav-bar
@@ -228,13 +230,29 @@ footer
 		ul li
 			display: block
 			line-height: 1.5em
-			margin-bottom: .3em	
+			margin-bottom: .5em	
+			img
+				width: 2.25em
+				padding: .5em
+				border: 1px solid $white-txt
+				border-radius: 4px
+				background-color: $dark-txt	
+				&:hover
+					background-color: lighten($dark-txt, 8%)
+	
+	address span, p span
+		color: $accent
 
+	address
+		// font-size: .9em
+	.gallery-descr
+		font-size: 1.2em 
+		text-transform: uppercase
+		font-weight: bold
 	.popup-gallery		
 		img
 			width: 4em
 			padding: 2px
-
 
 ////////////////////////////////////////////////
 // #sec-form
