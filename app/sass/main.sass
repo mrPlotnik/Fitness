@@ -1,16 +1,12 @@
 @import 'bourbon'     // Миксины для SASS
 @import "font"				// Шрифты
 @import "vars"        // Переменные
-@import "libs"        // Библиотеки
-			
+@import "libs"        // Библиотеки			
 
-// Отключение предупреждений бурбона в консолиииииииdcdcттт
+// Отключение предупреждений бурбона в консоли
 $output-bourbon-deprecation-warnings: false
 
 *
-	margin: 0
-	padding: 0
-	box-sizing: border-box
 	text-decoration: none !important	
 	user-select: none // Пользователю запрещено выделять элемент
 	&:active, &:focus
@@ -31,6 +27,9 @@ body
 section
 	padding: 3em 0
 
+#sec-4, #sec-6
+	text-align: center	
+
 // содержимое секций
 .wrapper
 	width: 70vw // 70% от ширины окна
@@ -39,7 +38,7 @@ section
 // Заголовки
 h1, h2, h3
 	text-transform: uppercase
-	font-weight: bold	
+	font-weight: bold		
 	span
 		color: $accent
 h1		
@@ -47,7 +46,7 @@ h1
 	margin-left: -.1em		
 h2		
 	font-size: 1.8em	
-	margin: 0 0 1em
+	// margin: 0 0 1em
 	color: $dark-txt
 	line-height: 2em
 	span						
@@ -79,26 +78,31 @@ h3
 	text-transform: uppercase		
 
 // Логотип
-.logo	
-	display: flex		
-	width: 5em
+.logo-container	
 	align-items: center
+	font-weight: 600
+	text-transform: uppercase
+	a
+		color: $white-txt
+		.logo
+			font-size: 1.2em						
+			+mt(.3s)
+			span
+				color: $accent
+		&:hover
+			.logo
+				color: $accent
 
-////////////////////////////////////////////////
-// 1 section header .nav-bar
-////////////////////////////////////////////////
-.nav-bar			
-	position: absolute
+//.nav-bar
+.nav-bar
 	text-transform: uppercase	
 	font-weight: 600	
-	justify-content: space-around		
+	justify-content: space-around
 	ul li	
 		list-style-type: none				
 		display: inline-block	
 		a
-			color: $white-txt
-			border-left: 1px solid #fff
-			padding: 0 1em
+			color: $white-txt			
 			+mt(.25s)			
 			&:hover
 				color: $accent
@@ -110,8 +114,16 @@ h3
 		&:hover
 			color: $dark-txt
 
+// header .nav-bar
+header
+	.nav-bar	
+		position: absolute
+		ul li	a
+			border-left: 1px solid #fff
+			padding: 0 1em
+		
 ////////////////////////////////////////////////
-// 1 section header
+// header
 ////////////////////////////////////////////////
 header
 	background-image: url("../img/bg1.jpg")
@@ -130,18 +142,13 @@ header
 				animation-iteration-count: infinite	
 
 ////////////////////////////////////////////////
-// 2 section #sec-2
+// #sec-2
 ////////////////////////////////////////////////
 #sec-2
-	color: $dark-txt
-	.wrapper	
-		.img
-			display: flex
-			align-items: center
-			height: 100%	
+	color: $dark-txt	
 	
 ////////////////////////////////////////////////
-// 2 section #sec-3
+// #sec-3
 ////////////////////////////////////////////////
 #sec-3
 	text-align: center
@@ -159,7 +166,7 @@ header
 		color: $white-txt		
 
 ////////////////////////////////////////////////
-// 4 section #sec-4
+// #sec-4
 ////////////////////////////////////////////////
 #sec-4
 	color: $dark-txt	
@@ -167,10 +174,11 @@ header
 		margin-bottom: 1em	
 	.btn
 		margin-bottom: 2em	
+	img
+		border-radius: .25em	
 
 ////////////////////////////////////////////////
-// 5 section #sec-5
-// 7 section #sec-7
+// #sec-5, #sec-7
 ////////////////////////////////////////////////
 #sec-5, #sec-7
 	text-align: center		
@@ -183,18 +191,16 @@ header
 		color: #fff				
 		span
 			font-size: 1.4em
-			color: #fff
-			font-weight: normal
+			color: #fff			
 
 #sec-5	
 	background-image: url("../img/sec5_bg.jpg")
 
 #sec-7	
-	background-image: url("../img/sec7_bg.jpg")	
-						
+	background-image: url("../img/sec7_bg.jpg")							
 
 ////////////////////////////////////////////////
-// 6 section #sec-6
+// #sec-6
 ////////////////////////////////////////////////			
 #sec-6
 	color: $dark-txt	
@@ -211,55 +217,100 @@ header
 			margin-top: .8em	
 
 ////////////////////////////////////////////////
-// 8 section #sec-8
+// footer
 ////////////////////////////////////////////////
-#sec-8
-	background-color: $bg-dark	
+footer	
+	background-color: #0f0e11		
+	.icons			
+		img
+			width: 1.5em
+			margin: 0 .3em		
+
+	.nav-bar	
+		ul li
+			display: block
+			line-height: 1.5em
+			margin-bottom: .5em	
+			img
+				width: 2.25em
+				padding: .5em
+				border: 1px solid $white-txt
+				border-radius: 4px
+				background-color: $dark-txt	
+				&:hover
+					background-color: lighten($dark-txt, 8%)
+	
+	address span, p span
+		color: $accent
+
+	address
+		// font-size: .9em
+	.gallery-descr
+		font-size: 1.2em 
+		text-transform: uppercase
+		font-weight: bold
+	.popup-gallery		
+		img
+			width: 4em
+			padding: 2px
+
+////////////////////////////////////////////////
+// #sec-form
+////////////////////////////////////////////////
+#sec-form
+	position: fixed
+	width: 100vw
+	height: 100vh	
+	z-index: 2
+	right: 0
+	top: 0
+	display: none		
+	background-color: #000000bb	
+	img
+		width: 2em
+	.container
+		border: solid 1px $accent
+		border-radius: 4px
+		background-color: #000000dd		
 	h3
 		color: $white-txt
-	form		
-		.group
-			position: relative	
-			width: 100%			 
-			input
-				width: 100%
-				height: 2.8em
-				margin-top: 1.2em
-				border: 1px solid $gray-800
-				background: $gray-900
-				padding: .5em 1em	
-				font-size: 1em
-				color: $white-txt
-				+mt(.5s)
-				&:hover				
-					border: 1px solid $gray-600	
-				&:focus ~ label, &:valid ~ label
-					top: -.5em					
-					color: $accent
-					+mt(.3s)						
-			label
-				font-size: .9em
-				font-weight: normal
-				position: absolute
-				pointer-events: none
-				left: 2em
-				top: 2.2em		
-			.help-block
-				height: 1em
-				margin-top: .6em	
-				color: $danger					
+	form	
+		input
+			width: 100%
+			height: 2.8em
+			margin-top: 1.2em
+			border: 1px solid $gray-800
+			background: $gray-900
+			padding: .5em 1em	
+			font-size: 1em
+			color: $white-txt
+			&:hover				
+				border: 1px solid $gray-600	
+			&:focus ~ label, &:valid ~ label
+				top: -.5em					
+				color: $accent
+				+mt(.3s)						
+		label
+			font-size: .9em
+			font-weight: normal
+			position: absolute
+			pointer-events: none
+			left: 2em
+			top: 2.2em		
+		.help-block
+			height: 1em
+			margin-top: .6em	
+			color: $danger		
 
-	.social, .gallery		
-		margin-bottom: 1em			
-		
-	.social	
-		.logo
-			// margin-bottom: 1em			
-		.icons
-			img
-				width: 2em
-				margin: 0 .3em		
-		p
-			vertical-align: center
+		.label-not-active
+			+mt(.3s)
+
+		.label-active
+			top: -.5em	!important				
+			color: $accent
+			+mt(.3s)
+
+.mfp-close
+	color: #fff	!important			
 
 @import "media" 
