@@ -30,10 +30,10 @@ section
 #sec-4, #sec-6
 	text-align: center	
 
-// содержимое секций
-.wrapper
-	width: 70vw // 70% от ширины окна
-	margin: 0 auto // Центрирование
+// // содержимое секций
+// .wrapper
+// 	width: 70% // 70% от ширины окна
+// 	margin: 0 auto // Центрирование
 
 // Заголовки
 h1, h2, h3
@@ -61,8 +61,8 @@ h3
 
 // Подзаголовок секций
 .descr
-	font-size: .9em
-	color: #888
+	font-size: .95em
+	color: #777
 	margin-bottom: 3em	
 
 // Заголовок пункта (#sec-4, #sec-6)
@@ -130,8 +130,6 @@ header
 	background-size: cover
 	background-position: center
 	height: 100vh		
-	.wrapper	
-		margin: 0 auto	
 		p
 			margin: 1.5em 0
 			font-weight: 600
@@ -161,6 +159,7 @@ header
 		&:hover
 			border: 5px solid $accent
 		.circle		
+			width: 100%
 			border-radius: 50%	
 	h3, h2
 		color: $white-txt		

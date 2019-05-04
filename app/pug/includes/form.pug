@@ -2,36 +2,35 @@ section#sec-form.align-items-center
 	.container.pb-5
 
 		.row.justify-content-end
-			.col-auto.p-2
+			.col-12.p-2
 				btn.close(href="#")
 					img.p-3(src="img/icons/cancel.svg", alt="")
 
-		.wrapper
-
-			.row
-				.col-auto
-					h3 оставьте заявку на 5 бесплатых тренировок
+		.row.justify-content-center.px-5
+			.col-12
+				h3 оставьте заявку на 5 бесплантых тренировок
 			
-			form#form
+			.col-12
+				form#form
 
-				.row
-					.form-group.col-12.col-md-6.col-lg-4
-						input.form-control(type="text" id="name" data-error="Введите Имя" required)
-						.help-block.with-errors
-						label.label-not-active(for="name") Имя
+					.row
+						.form-group.col-12.col-md-6.col-lg-4
+							input.form-control(type="text" id="name" data-error="Введите Имя" required)
+							.help-block.with-errors
+							label.label-not-active(for="name") Имя
 
-					.form-group.col-12.col-md-6.col-lg-4
-						input.form-control(type="tel" id="phone" data-error="Неверный номер" required)
-						.help-block.with-errors
-						label.label-not-active(for="phone") Телефон
+						.form-group.col-12.col-md-6.col-lg-4
+							input.form-control(type="tel" id="phone" data-error="Неверный номер" required)
+							.help-block.with-errors
+							label.label-not-active(for="phone") Телефон
 
-					.form-group.col-12.col-md-6.col-lg-4
-						input.form-control(type="email" id="email" data-error="Неверный E-mail адрес" required)
-						.help-block.with-errors
-						label.label-not-active(for="email") E-mail
+						.form-group.col-12.col-md-6.col-lg-4
+							input.form-control(type="email" id="email" data-error="Неверный E-mail адрес" required)
+							.help-block.with-errors
+							label.label-not-active(for="email") E-mail
 
-					.d-flex.w-100.align-items-center
-						.col-auto
-							button.btn.btn-outline-primary(type='submit') записаться на занятие
-						.col-auto
-							#msgSubmit.invisible
+						.d-flex.w-100.align-items-center
+							.col-auto
+								button.btn.btn-outline-primary(type='submit') записаться на занятие
+							.col-auto
+								#msgSubmit.invisible
