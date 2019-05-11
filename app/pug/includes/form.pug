@@ -11,21 +11,21 @@ section#sec-form.align-items-center
 				h3 оставьте заявку на 5 бесплантых тренировок
 			
 			.col-12
-				form#form
+				form#form(role="form" data-toggle="validator")
 
 					.row
 						.form-group.col-12.col-md-6.col-lg-4
-							input.form-control(type="text" id="name" data-error="Введите Имя" required)
+							input.form-control(type="text" id="name" required)
 							.help-block.with-errors
 							label.label-not-active(for="name") Имя
 
 						.form-group.col-12.col-md-6.col-lg-4
-							input.form-control(type="tel" id="phone" data-error="Неверный номер" required)
+							input.form-control(type="tel" id="phone" required)
 							.help-block.with-errors
 							label.label-not-active(for="phone") Телефон
 
 						.form-group.col-12.col-md-6.col-lg-4
-							input.form-control(type="email" id="email" data-error="Неверный E-mail адрес" required)
+							input.form-control(type="email" id="email" required)
 							.help-block.with-errors
 							label.label-not-active(for="email") E-mail
 

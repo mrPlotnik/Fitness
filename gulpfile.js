@@ -31,12 +31,11 @@ gulp.task('pug', () => {
 gulp.task('sass', () => { 	
 	return gulp.src('app/sass/**/*.sass')		
 		.pipe(sass({
-			// outputStyle: 'expand', 
+			outputStyle: 'expand', 
 			includePaths: require('node-bourbon').includePaths
 		}).on('error', sass.logError)) // Оповещение в случае ошибки при компиляции SASS в CSS
-		// .pipe(autoprefixer(['last 15 versions'])) // Добавление автопрефиксов, для одинакового отображения во всех браузерах (последнии 15 версий)
-		// .pipe(gulp.dist('dist/css'))		
-		// .pipe(csso())	// Минимизируем	 		
+		.pipe(autoprefixer(['last 15 versions'])) // Добавление автопрефиксов, для одинакового отображения во всех браузерах (последнии 15 версий)
+		.pipe(csso())	// Минимизируем	 		
 		// .pipe(rename({suffix: '.min', prefix : ''})) // Добавление суффикса и префикса в название CSS файла
 		.pipe(gulp.dest('dist/css'))			
 		.pipe(browserSync.stream()); // Inject	
@@ -95,7 +94,7 @@ gulp.task( 'deploy', () => {
 		host:     'files.000webhost.com',
 		port:     '21',
 		user:     'alenkakr',
-		password: '', // Do not forget to delete
+		password: 'JRgfKOZxDfvBzrtLsNES', // Do not forget to delete
 		parallel: 100,
 		maxConnections: 5,
 		log:      gutil.log

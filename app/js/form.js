@@ -2,13 +2,13 @@
 
 // Этот фрагмент кода проверяет, нашел ли Bootstrap Validator проблемы и остановил ли работу кода. 
 $("#form").validator().on("submit", (function(event) {
-		if (event.isDefaultPrevented()) {	// обработка ошибки формы...	
-			formError(); // вызываем функцию formError()
-			submitMSG(false, "Заполните всю форму!");
-		} else { // если все в порядке! 
-			event.preventDefault(); // Останавливает отправку данных формы при обновлении страницы без выбора действия в форме.
-			submitForm(); // вызывает функцию submitForm()
-		}
+	if (event.isDefaultPrevented()) {	// обработка ошибки формы...	
+		formError(); // вызываем функцию formError()
+		submitMSG(false, "Заполните всю форму!");
+	} else { // если все в порядке! 
+		event.preventDefault(); // Останавливает отправку данных формы при обновлении страницы без выбора действия в форме.
+		submitForm(); // вызывает функцию submitForm()
+	}
 }));
 
 // Функция, которая отправляет данные формы в php/form.php
@@ -21,18 +21,20 @@ function submitForm() {
 	$.ajax({
 		type: "POST",
 		url: "php/form.php", // адрес размещения файла PHP
-		data: "name=" + name + "&email=" + email + 'phone', // ошибка?
-		// функция обратного вызова
+		data: "name=" + name + "&email=" + email + '&phone' + phone, 
+		// Функция обратного вызова вызывается, когда объект AJAX успешно принял информацию от скрипта PHP
 		success : function(text) { // если запрос успешен вызываем функцию
 			if (text == "success") { // проверяем на соответствие статуса запроса
 				formSuccess(); // если, статус запроса == "success", то вызоваем функцию formSuccess(),
+			} else {
+				formError();
+				submitMSG(false, text);
 			}
-		}
+		}	
 	})
 };
 
-function formSuccess() {
-	$("#msgSubmit").removeClass("hidden");
+function formSuccess() {	
 	$("#form")[0].reset();
 	submitMSG(true, "Сообщение отправлено!")
 };
