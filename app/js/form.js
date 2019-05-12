@@ -23,7 +23,7 @@ $(document).ready(function() {
 		$.ajax({
 			type: "POST",
 			url: "php/form.php", // адрес размещения файла PHP
-			data: "name=" + name + "&email=" + email + '&phone' + phone, 
+			data: "name=" + name + "&email=" + email + "&phone=" + phone, 
 			// Функция обратного вызова вызывается, когда объект AJAX успешно принял информацию от скрипта PHP
 			success : function(text) { // если запрос успешен вызываем функцию
 				if (text == "success") { // проверяем на соответствие статуса запроса

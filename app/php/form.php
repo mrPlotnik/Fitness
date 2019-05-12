@@ -29,28 +29,29 @@ $Subject = "Fitness. Новый клиент!";
 // готовим тело электронного письма
 $Body .= "Name: ";
 $Body .= $name;
-$Body .= "/n";
+$Body .= "\n";
 
 $Body .= "Email: ";
 $Body .= $email;
-$Body .= "/n";
+$Body .= "\n";
 
 $Body .= "Phone: ";
 $Body .= $phone;
-$Body .= "/n";
+$Body .= "\n";
 
 // отправляем на электронную почту
 $success = mail($EmailTo, $Subject, $Body, "From:".$email);
 
 // перенаправляем на страницу сообщения об успешной отправке данных формы
-if ($success && $errorMSG == ""){
-	 echo "success";
-}else{
-		if($errorMSG == ""){
-				echo "Something went wrong :(";
-		} else {
-				echo $errorMSG;
-		}
+if ($success && $errorMSG == "") {
+	echo "success";
+} 
+else {
+	if($errorMSG == "") {
+		echo "Что-то пошло не так :(";
+	} else {
+		echo $errorMSG;
+	}
 }
 
 ?>
