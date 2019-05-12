@@ -19,9 +19,7 @@ var
 	reload				= browserSync.reload; 
 
 gulp.task('pug', () => {
-	return gulp.src(
-			'app/pug/index.pug',			
-			)
+	return gulp.src( 'app/pug/index.pug', )
 	.pipe(plumber())
 	.pipe(pug({pretty: true}))
 	.pipe(gulp.dest('dist/'))
@@ -52,7 +50,7 @@ gulp.task('js', () => {
 		'app/js/common.js', // Always at the end
 		])
 	.pipe(concat('scripts.min.js'))
-	// .pipe(uglify()) // Mifify js (opt.)
+	.pipe(uglify()) // Mifify js (opt.)
 	.pipe(gulp.dest('dist/js'))
 	.pipe(reload({ stream: true }))
 });
@@ -95,12 +93,12 @@ gulp.task( 'deploy', () => {
 		port:     '21',
 		user:     'alenkakr',
 		password: 'JRgfKOZxDfvBzrtLsNES', // Do not forget to delete
-		parallel: 100,
-		maxConnections: 5,
+		parallel: 10,
+		// maxConnections: 3,
 		log:      gutil.log
 	});
 
-	var globs = [	'dist/**'	];
+	var globs = [ 'dist/**' ];
 
 	return gulp.src( globs, { base: 'dist', buffer: false } )
 		// .pipe( conn.newer( 'public_html/' ) ) // only upload newer files

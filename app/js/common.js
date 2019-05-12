@@ -13,9 +13,6 @@ $(document).ready(function() {
 
 	$("a[href*='#']").mPageScroll2id();
 
-
-
-
 	$('.popup-gallery').magnificPopup({
 		delegate: 'a',
 		type: 'image',
@@ -34,19 +31,4 @@ $(document).ready(function() {
 		}
 	});
 	
-	
-
-	$(".free-train").click(function() {		
-		$("#sec-form").fadeIn(600);
-		$("#sec-form").css("display", "flex");		
-	});
-
-	$(".close").click(function() {		
-		$("#sec-form").fadeOut(600);
-		$("#form")[0].reset();	
-		$("#msgSubmit").removeClass().addClass("invisible");	
-	});
-
-	
-
 }); 
