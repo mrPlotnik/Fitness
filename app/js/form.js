@@ -27,7 +27,6 @@ $(document).ready(function() {
 			// Функция обратного вызова вызывается, когда объект AJAX успешно принял информацию от скрипта PHP
 			success : function(text) { // если запрос успешен вызываем функцию
 				if (text == "success") { // проверяем на соответствие статуса запроса
-					console.log("ЗАЕБИСЬ");
 					formSuccess(); // если, статус запроса == "success", то вызоваем функцию formSuccess()
 				} else {
 					formError();
@@ -38,7 +37,6 @@ $(document).ready(function() {
 	};
 
 	function formSuccess() {	
-		console.log("ПИЗДАТО");
 		$("#form")[0].reset();
 		submitMSG(true, "Сообщение отправлено!");
 	};
@@ -51,7 +49,7 @@ $(document).ready(function() {
 
 	function submitMSG(valid, msg) {
 		var msgClasses;
-		console.log("ОХУЕННО");
+		
 		if (valid) {
 			msgClasses = "tada animated text-success text-uppercase";
 		}
