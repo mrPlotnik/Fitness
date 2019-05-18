@@ -38,7 +38,7 @@ $(document).ready(function() {
 
 	function formSuccess() {	
 		$("#form")[0].reset();
-		submitMSG(true, "Сообщение отправлено!")
+		submitMSG(true, "Сообщение отправлено!");
 	};
 
 	function formError(){
