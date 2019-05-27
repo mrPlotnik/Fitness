@@ -45,11 +45,12 @@ $success = mail($EmailTo, $Subject, $Body, "From:".$email);
 // перенаправляем на страницу сообщения об успешной отправке данных формы
 if ($success && $errorMSG == "") {
 	echo "success";
-} 
+}
 else {
-	if($errorMSG == "") {
+	if ($errorMSG == "") {
 		echo "Что-то пошло не так :(";
-	} else {
+	}
+	else {
 		echo $errorMSG;
 	}
 }

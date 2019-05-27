@@ -28,7 +28,7 @@ section
 	padding: 3em 0
 
 #sec-4, #sec-6
-	text-align: center	
+	text-align: center
 
 // Заголовки
 h1, h2, h3
@@ -37,11 +37,15 @@ h1, h2, h3
 	span
 		color: $accent
 h1		
-	font-size: 3.5em
-	margin-left: -.1em		
+	font-size: 3.25em	
+	font-weight: normal
+	span
+		padding: 0 .1em
+		border-radius: 3px
+		background-color: $accent		
+		// color: $white-txt
 h2		
-	font-size: 1.8em	
-	// margin: 0 0 1em
+	font-size: 1.8em		
 	color: $dark-txt
 	line-height: 2em
 	span						
@@ -53,11 +57,10 @@ h3
 	span
 		text-transform: none
 
-
 // Подзаголовок секций
 .descr
 	font-size: .95em
-	color: #777
+	color: $s-descr
 	margin-bottom: 3em	
 
 // Заголовок пункта (#sec-4, #sec-6)
@@ -75,18 +78,22 @@ h3
 // Логотип
 .logo-container	
 	align-items: center
-	font-weight: 600
+	font-weight: normal
 	text-transform: uppercase
-	a
-		color: $white-txt
-		.logo
-			font-size: 1.2em						
-			+mt(.3s)
+	.logo
+		font-size: 1.25em
+		a
+			color: $white-txt
 			span
-				color: $accent
-		&:hover
-			.logo
-				color: $accent
+				padding: 0 .1em
+				margin-left: .1em
+				border-radius: .1em
+				background-color: $accent-tr
+				color: $white-txt
+				+mt(.25s)
+			&:hover
+				span
+					background-color: darken($accent-tr, 8%)		
 
 //.nav-bar
 .nav-bar
@@ -102,21 +109,9 @@ h3
 			&:hover
 				color: $accent
 		&:first-child	a
-			border-left: none						
-	.nav-btn
-		white-space: nowrap
-		.btn
-		&:hover
-			color: $dark-txt
+			border-left: none	
 
-// header .nav-bar
-header
-	.nav-bar	
-		position: absolute
-		ul li	a
-			border-left: 1px solid #fff
-			padding: 0 1em
-		
+
 ////////////////////////////////////////////////
 // header
 ////////////////////////////////////////////////
@@ -124,14 +119,36 @@ header
 	background-image: url("../img/bg1.jpg")
 	background-size: cover
 	background-position: center
-	height: 100vh		
-	p
-		font-weight: 600
+	height: 100vh	
+	.position-absolute	
+		top: 0
+	.nav-bar
+		ul li	a
+			border-left: 1px solid $white-txt
+			padding: 0 1em
+	.logo-descr
 		text-transform: uppercase
-		color: #fff				
+		letter-spacing: 2px
+		font-size: 1.5em
+	h2		
+		color: $white-txt	
+		font-weight: normal
+		line-height: 1.5em
+		span
+			padding: 0 .1em
+			margin-left: .1em
+			border-radius: .1em
+			background-color: $accent-tr
+			color: $white-txt
 		.animated					
 			animation-duration: 3s
 			animation-iteration-count: infinite	
+	.h2-descr
+		text-transform: uppercase
+	.header-btn
+		padding: 1em 1.5em	
+		border-radius: .3em
+		font-size: 1em
 
 ////////////////////////////////////////////////
 // #sec-2
@@ -177,10 +194,10 @@ header
 		height: 25em	
 	h2,
 		font-weight: normal
-		color: #fff				
+		color: $white-txt			
 		span
 			font-size: 1.4em
-			color: #fff			
+			color: $white-txt	
 
 #sec-5	
 	background-image: url("../img/sec5_bg.jpg")
@@ -209,7 +226,7 @@ header
 // footer
 ////////////////////////////////////////////////
 footer	
-	background-color: #0f0e11		
+	background-color: $bg-dark	
 	.icons			
 		img
 			width: 1.5em
@@ -224,16 +241,13 @@ footer
 				width: 2.25em
 				padding: .5em
 				border: 1px solid $white-txt
-				border-radius: 4px
-				background-color: $dark-txt	
+				border-radius: .3em	
 				&:hover
-					background-color: lighten($dark-txt, 8%)
+					background-color: lighten($dark-txt, 15%)
 	
 	address span, p span
 		color: $accent
 
-	address
-		// font-size: .9em
 	.gallery-descr
 		font-size: 1.2em 
 		text-transform: uppercase
@@ -254,13 +268,13 @@ footer
 	right: 0
 	top: 0
 	display: none		
-	background-color: #000000bb	
+	background-color: $bg-dark-tr-70
 	img
 		width: 2em
 	.container
 		border: solid 1px $accent
-		border-radius: 4px
-		background-color: #000000dd		
+		border-radius: .3em
+		background-color: $bg-dark-tr-90	
 	h3
 		color: $white-txt
 	form	
@@ -299,7 +313,37 @@ footer
 			color: $accent
 			+mt(.3s)
 
+////////////////////////////////////////////////		
+// Отсчет времени #countdown
+////////////////////////////////////////////////
+#countdown .clock-container
+	background: #00000088
+	padding: 1em 2em 2em
+	border-radius: 5px
+	border: 1px solid $accent
+	h2	
+		color: $white-txt
+	#clock	
+		padding: 1.25em 0
+		border-radius: 5px
+		background: #00000099
+		.hours, .minutes, .seconds
+			padding: .25em
+			border-radius: .1em
+			background: $accent-tr
+		span
+			display: inline-block
+			font-size: 2.5em
+			padding: .25em 0
+			line-height: 1em
+			font-weight: bold
+		.smalltext
+			padding-top: .5em
+			font-size: 0.8em
+			text-transform: uppercase		
+
+
 .mfp-close
-	color: #fff	!important			
+	color: $white-txt	!important			
 
 @import "media" 
