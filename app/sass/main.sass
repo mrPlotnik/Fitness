@@ -111,6 +111,8 @@ h3
 		&:first-child	a
 			border-left: none	
 
+.nav-container
+	margin: 0 auto
 
 ////////////////////////////////////////////////
 // header
@@ -120,35 +122,37 @@ header
 	background-size: cover
 	background-position: center
 	height: 100vh	
-	.position-absolute	
-		top: 0
-	.nav-bar
-		ul li	a
-			border-left: 1px solid $white-txt
-			padding: 0 1em
-	.logo-descr
-		text-transform: uppercase
-		letter-spacing: 2px
-		font-size: 1.5em
-	h2		
-		color: $white-txt	
-		font-weight: normal
-		line-height: 1.5em
-		span
-			padding: 0 .1em
-			margin-left: .1em
-			border-radius: .1em
-			background-color: $accent-tr
-			color: $white-txt
-		.animated					
-			animation-duration: 3s
-			animation-iteration-count: infinite	
-	.h2-descr
-		text-transform: uppercase
-	.header-btn
-		padding: 1em 1.5em	
-		border-radius: .3em
-		font-size: 1em
+	nav	
+		height: 10vh
+		.nav-bar
+			ul li	a
+				border-left: 1px solid $white-txt
+				padding: 0 1em
+	#header-content
+		height: 90vh			
+		.logo-descr
+			text-transform: uppercase
+			letter-spacing: 2px
+			font-size: 1.5em
+		h2		
+			color: $white-txt	
+			font-weight: normal
+			line-height: 1.5em
+			span
+				padding: 0 .1em
+				margin-left: .1em
+				border-radius: .1em
+				background-color: $accent-tr
+				color: $white-txt
+			.animated					
+				animation-duration: 3s
+				animation-iteration-count: infinite	
+		.h2-descr
+			text-transform: uppercase
+		.header-btn
+			padding: 1em 2em	
+			border-radius: .3em
+			font-size: 1em
 
 ////////////////////////////////////////////////
 // #sec-2
