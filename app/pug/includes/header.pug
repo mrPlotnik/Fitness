@@ -1,49 +1,51 @@
 header#header
 
-	//- nav-bar start
+	//- навигационная панель
 	nav.d-flex
 		.position-absolute.w-100
 			.container
 				.row.py-3.justify-content-between.align-items-center
-					
+
+					//- логотип
 					.col-auto
 						.logo-container
-							.logo 
-								a(href="#") fitne
-									span ss		
-					
-					.col-auto
-						a.btn.btn-outline-light(href="#footer") Связаться с нами		
+							.logo fitne
+								span ss
 
-		.nav-container
-			.nav-bar
-				.row.py-4.justify-content-center
-
+					//- кнопка "связаться с нами". Скролл к #footer
 					.col-auto
-						ul.m-0.p-0.d-none.d-md-flex
-							li 
-								a(href="#sec-2") о&nbspнас
-							li
-								a(href="#sec-4") фитнес-услуги
-							li
-								a(href="#sec-5") тренера
-	//- nav-bar end
+						a.btn.btn-outline-light(href="#footer") Связаться с нами
+		
+		//- меню сайта
+		.menu-container
+			.row.py-4.justify-content-center
+
+				.col-auto
+					ul.m-0.p-0.d-none.d-md-flex
+						li 
+							a(href="#sec-2") о&nbspнас
+						li
+							a(href="#sec-4") фитнес-услуги
+						li
+							a(href="#sec-5") тренера
 	
-	//-
+	//- основная информация хедера
 	#header-content.container.text-center
 		.row.align-items-center.h-100
 
 			.container
 				.row.mb-3.mb-sm-5
-					#h1.container
-						h1.mb-3 
-							.logo-container
-								.logo 
-									a(href="#") клуб fitne
-										span ss	
+
+					//- заголовок сайта и слоган
+					.container
+						h1.mb-3 Спортивный клуб&nbsp
+						.logo-container
+							.logo fitne
+								span ss	
 						p.logo-descr сделай своё тело красивым
 
 				.row.align-items-center
+
 					.col-12.col-sm-6
 						h2.mb-4 первые 5 дней 
 							span.animated.flash бесплатно
@@ -53,3 +55,4 @@ header#header
 						a.btn.btn-primary.header-btn.free-train.mb-4(href="#sec-form") онлайн запись
 					.col-12.col-sm-6
 						include countdown.pug
+	//- header content end					

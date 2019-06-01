@@ -37,13 +37,13 @@ h1, h2, h3
 	span
 		color: $accent
 h1		
-	font-size: 3.25em	
+	font-size: 3em	
 	font-weight: normal
+	display: inline-block
 	span
 		padding: 0 .1em
 		border-radius: 3px
 		background-color: $accent		
-		// color: $white-txt
 h2		
 	font-size: 1.8em		
 	color: $dark-txt
@@ -76,27 +76,23 @@ h3
 	text-transform: uppercase		
 
 // Логотип
-.logo-container	
-	align-items: center
-	font-weight: normal
-	text-transform: uppercase
-	.logo
+header, footer	
+	.logo-container	
 		font-size: 1.25em
-		a
-			color: $white-txt
-			span
-				padding: 0 .1em
-				margin-left: .1em
-				border-radius: .1em
-				background-color: $accent-tr
-				color: $white-txt
-				+mt(.25s)
-			&:hover
-				span
-					background-color: darken($accent-tr, 8%)		
+		align-items: center
+		font-weight: normal
+		text-transform: uppercase
+		display: inline-block
+		span
+			padding: 0 .1em
+			margin-left: .1em
+			border-radius: .1em
+			background-color: $accent-tr
+			+mt(.25s)
 
-//.nav-bar
-.nav-bar
+// навигационная панель
+.menu-container
+	margin: 0 auto
 	text-transform: uppercase	
 	font-weight: 600	
 	justify-content: space-around
@@ -111,9 +107,6 @@ h3
 		&:first-child	a
 			border-left: none	
 
-.nav-container
-	margin: 0 auto
-
 ////////////////////////////////////////////////
 // header
 ////////////////////////////////////////////////
@@ -124,12 +117,14 @@ header
 	height: 100vh	
 	nav	
 		height: 10vh
-		.nav-bar
+		.menu-container
 			ul li	a
 				border-left: 1px solid $white-txt
 				padding: 0 1em
 	#header-content
-		height: 90vh			
+		height: 90vh	
+		.logo-container
+			font-size: 3em	
 		.logo-descr
 			text-transform: uppercase
 			letter-spacing: 2px
@@ -236,7 +231,7 @@ footer
 			width: 1.5em
 			margin: 0 .3em		
 
-	.nav-bar	
+	.menu-container
 		ul li
 			display: block
 			line-height: 1.5em
