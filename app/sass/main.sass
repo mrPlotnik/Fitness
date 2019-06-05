@@ -57,6 +57,10 @@ h3
 	span
 		text-transform: none
 
+// Плавная анимация при наведении
+path, span, a
+	+mt(.25s)		
+
 // Подзаголовок секций
 .descr
 	font-size: .95em
@@ -88,7 +92,6 @@ header, footer
 			margin-left: .1em
 			border-radius: .1em
 			background-color: $accent-tr
-			+mt(.25s)
 
 // навигационная панель
 .menu-container
@@ -100,8 +103,7 @@ header, footer
 		list-style-type: none				
 		display: inline-block	
 		a
-			color: $white-txt			
-			+mt(.25s)			
+			color: $white-txt
 			&:hover
 				color: $accent
 		&:first-child	a
@@ -171,7 +173,7 @@ header
 		.circle		
 			width: 100%
 			border-radius: 50%	
-	h3, h2
+	h3
 		color: $white-txt		
 
 ////////////////////////////////////////////////
@@ -222,27 +224,71 @@ header
 			margin-top: .8em	
 
 ////////////////////////////////////////////////
+// #sec-8
+////////////////////////////////////////////////
+#sec-8
+	background-color: $bg-dark-tr-90
+	h2
+		text-align: center	
+		color: $white-txt
+	.arrow		
+		text-align: center
+		svg
+			width: 3em
+		&:hover
+			path
+				fill: $accent
+	.prev
+		transform: rotate(180deg)
+	.slider-container
+		overflow: hidden
+		border-left: 1px solid $accent
+		border-right: 1px solid $accent
+		.slides
+			position: relative
+			padding: 0
+			li
+				list-style-type: none	
+				display: table
+				float: left
+				.img-container
+					text-align: center
+					img
+						width: 15em
+						padding: 1em 0
+						border-radius: 50%	
+							
+				h3
+					color: $white-txt
+
+////////////////////////////////////////////////
 // footer
 ////////////////////////////////////////////////
 footer	
 	background-color: $bg-dark	
 	.icons			
-		img
+		svg
 			width: 1.5em
-			margin: 0 .3em		
+			margin: 0 .3em	
+			path
+			&:hover
+				path
+					fill: $accent		
 
 	.menu-container
 		ul li
 			display: block
 			line-height: 1.5em
 			margin-bottom: .5em	
-			img
+			svg
 				width: 2.25em
 				padding: .5em
 				border: 1px solid $white-txt
-				border-radius: .3em	
-				&:hover
-					background-color: lighten($dark-txt, 15%)
+				border-radius: .3em						
+			&:hover
+				border-color: $accent
+				path
+					fill: $accent	
 	
 	address span, p span
 		color: $accent
