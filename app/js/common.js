@@ -41,7 +41,7 @@ $(document).ready(function() {
 	});
 
 	//////////////////////////////////////////////////////
-	// Countdown start
+	// Обратный отсчет
 	//////////////////////////////////////////////////////
 	function getTimeRemaining(endtime) {
 		var t = Date.parse(endtime) - Date.parse(new Date());
@@ -134,7 +134,7 @@ $(document).ready(function() {
 	$('.prev').click(prevSlide);
 
 	//////////////////////////////////////////////////////	
-	//  Replace all SVG images with inline SVG
+	// Replace all SVG images with inline SVG
 	// https://gist.github.com/Bloggerschmidt/61beeca2cce94a70c9df
 	//////////////////////////////////////////////////////		 
 	$('img.svg').each(function(){
@@ -143,7 +143,7 @@ $(document).ready(function() {
 		var imgClass = $img.attr('class');
 		var imgURL = $img.attr('src');
 
-		jQuery.get(imgURL, function(data) {
+		$.get(imgURL, function(data) {
 			// Get the SVG tag, ignore the rest
 			var $svg = $(data).find('svg');
 
@@ -164,6 +164,6 @@ $(document).ready(function() {
 
 		}, 'xml');
 
-});
+	});
 
 }); 

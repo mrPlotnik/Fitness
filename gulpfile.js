@@ -154,4 +154,3 @@ gulp.task('removedist', () => {
 // По умолчанию (при запуске)
 //----------------------------------------------
 gulp.task('default', ['removedist','beforeTheStart', 'watch']);
-

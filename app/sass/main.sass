@@ -1,10 +1,10 @@
 @import 'bourbon'     // Миксины для SASS
-@import "font"				// Шрифты
-@import "vars"        // Переменные
-@import "libs"        // Библиотеки			
+@import 'font'				// Шрифты
+@import 'vars'        // Переменные
+@import 'libs'        // Библиотеки			
 
 // Отключение предупреждений бурбона в консоли
-$output-bourbon-deprecation-warnings: false
+// $output-bourbon-deprecation-warnings: false
 
 *
 	text-decoration: none !important	
@@ -17,7 +17,7 @@ html
 
 body
 	font-size: 14px
-	line-height: 1.3em
+	line-height: 1.35em
 	font-family: 'My-font', sans-serif;
 	color: $white-txt
 	font-weight: normal
@@ -26,7 +26,6 @@ body
 // Секции 
 section
 	padding: 3em 0
-
 #sec-4, #sec-6
 	text-align: center
 
@@ -62,8 +61,7 @@ path, span, a
 	+mt(.25s)		
 
 // Подзаголовок секций
-.descr
-	font-size: .95em
+.descr	
 	color: $s-descr
 	margin-bottom: 3em	
 
@@ -78,6 +76,10 @@ path, span, a
 	font-size: .9em
 	font-weight: 600			
 	text-transform: uppercase		
+.btn-big
+	padding: 1em 2em	
+	border-radius: .3em
+	font-size: 1em	
 
 // Логотип
 header, footer	
@@ -93,7 +95,7 @@ header, footer
 			border-radius: .1em
 			background-color: $accent-tr
 
-// навигационная панель
+// Навигационная панель
 .menu-container
 	margin: 0 auto
 	text-transform: uppercase	
@@ -146,10 +148,6 @@ header
 				animation-iteration-count: infinite	
 		.h2-descr
 			text-transform: uppercase
-		.header-btn
-			padding: 1em 2em	
-			border-radius: .3em
-			font-size: 1em
 
 ////////////////////////////////////////////////
 // #sec-2
@@ -247,6 +245,7 @@ header
 		.slides
 			position: relative
 			padding: 0
+			margin: 0
 			li
 				list-style-type: none	
 				display: table
@@ -254,12 +253,13 @@ header
 				.img-container
 					text-align: center
 					img
-						width: 15em
-						padding: 1em 0
-						border-radius: 50%	
-							
+						border-radius: 50%		
+						border: 2px solid $accent						
 				h3
 					color: $white-txt
+					text-transform: none
+				p
+					line-height: 1.5em	
 
 ////////////////////////////////////////////////
 // footer
@@ -284,11 +284,7 @@ footer
 				width: 2.25em
 				padding: .5em
 				border: 1px solid $white-txt
-				border-radius: .3em						
-			&:hover
-				border-color: $accent
-				path
-					fill: $accent	
+				border-radius: .3em					
 	
 	address span, p span
 		color: $accent
