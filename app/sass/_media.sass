@@ -8,45 +8,33 @@
 
 // Средние девайсы («таблетки», >= 768px)
 @media (max-width: 767.98px)
+	// Заголовки
+	h2
+		line-height: 1.5em
+
 	// header
-	.nav-bar 
-		font-size: .9em 
-		ul li a				
-			padding: 0 .5em
+	#countdown
+		font-size: .9em		
 
 	// sec-2
 	#sec-2
-		.col-5		
+		img		
 			display: none		
 	
 // Малые девайсы («ландшафтные телефоны», >= 576px)
 @media (max-width: 575.98px)
 	// header
 	header
-		h1
-			font-size: 2.5em
-		.nav-bar
-			display: none 
-			font-size: 1em
-
-	.wrapper
-		width: 90vw
-	
-	// #sec-4
-	#sec-4
-		h2
-			font-size: 1.3em		
-
+		nav
+			font-size: .9em
+		#header-content
+			font-size: .9em
+			#h1
+				font-size: .75em
+			
 // Custom Media Queries 
 @media (max-width: 370px)
 	//	
 
 @media (max-height: 374px)
-	//Все .wrapper во всех section
-	.wrapper	
-		width: 90vw	
-		margin: 3em	auto 0		
-
-	// header
-	// 	.wrapper
-	// 		margin-top: 0	
+	//

@@ -1,10 +1,10 @@
 @import 'bourbon'     // Миксины для SASS
-@import "font"				// Шрифты
-@import "vars"        // Переменные
-@import "libs"        // Библиотеки			
+@import 'font'				// Шрифты
+@import 'vars'        // Переменные
+@import 'libs'        // Библиотеки			
 
 // Отключение предупреждений бурбона в консоли
-$output-bourbon-deprecation-warnings: false
+// $output-bourbon-deprecation-warnings: false
 
 *
 	text-decoration: none !important	
@@ -17,7 +17,7 @@ html
 
 body
 	font-size: 14px
-	line-height: 1.3em
+	line-height: 1.35em
 	font-family: 'My-font', sans-serif;
 	color: $white-txt
 	font-weight: normal
@@ -26,14 +26,8 @@ body
 // Секции 
 section
 	padding: 3em 0
-
 #sec-4, #sec-6
-	text-align: center	
-
-// содержимое секций
-.wrapper
-	width: 70vw // 70% от ширины окна
-	margin: 0 auto // Центрирование
+	text-align: center
 
 // Заголовки
 h1, h2, h3
@@ -42,11 +36,15 @@ h1, h2, h3
 	span
 		color: $accent
 h1		
-	font-size: 3.5em
-	margin-left: -.1em		
+	font-size: 3em	
+	font-weight: normal
+	display: inline-block
+	span
+		padding: 0 .1em
+		border-radius: 3px
+		background-color: $accent		
 h2		
-	font-size: 1.8em	
-	// margin: 0 0 1em
+	font-size: 1.8em		
 	color: $dark-txt
 	line-height: 2em
 	span						
@@ -58,11 +56,13 @@ h3
 	span
 		text-transform: none
 
+// Плавная анимация при наведении
+path, span, a
+	+mt(.25s)		
 
 // Подзаголовок секций
-.descr
-	font-size: .9em
-	color: #888
+.descr	
+	color: $s-descr
 	margin-bottom: 3em	
 
 // Заголовок пункта (#sec-4, #sec-6)
@@ -76,25 +76,28 @@ h3
 	font-size: .9em
 	font-weight: 600			
 	text-transform: uppercase		
+.btn-big
+	padding: 1em 2em	
+	border-radius: .3em
+	font-size: 1em	
 
 // Логотип
-.logo-container	
-	align-items: center
-	font-weight: 600
-	text-transform: uppercase
-	a
-		color: $white-txt
-		.logo
-			font-size: 1.2em						
-			+mt(.3s)
-			span
-				color: $accent
-		&:hover
-			.logo
-				color: $accent
+header, footer	
+	.logo-container	
+		font-size: 1.25em
+		align-items: center
+		font-weight: normal
+		text-transform: uppercase
+		display: inline-block
+		span
+			padding: 0 .1em
+			margin-left: .1em
+			border-radius: .1em
+			background-color: $accent-tr
 
-//.nav-bar
-.nav-bar
+// Навигационная панель
+.menu-container
+	margin: 0 auto
 	text-transform: uppercase	
 	font-weight: 600	
 	justify-content: space-around
@@ -102,26 +105,12 @@ h3
 		list-style-type: none				
 		display: inline-block	
 		a
-			color: $white-txt			
-			+mt(.25s)			
+			color: $white-txt
 			&:hover
 				color: $accent
 		&:first-child	a
-			border-left: none						
-	.nav-btn
-		white-space: nowrap
-		.btn
-		&:hover
-			color: $dark-txt
+			border-left: none	
 
-// header .nav-bar
-header
-	.nav-bar	
-		position: absolute
-		ul li	a
-			border-left: 1px solid #fff
-			padding: 0 1em
-		
 ////////////////////////////////////////////////
 // header
 ////////////////////////////////////////////////
@@ -129,17 +118,36 @@ header
 	background-image: url("../img/bg1.jpg")
 	background-size: cover
 	background-position: center
-	height: 100vh		
-	.wrapper	
-		margin: 0 auto	
-		p
-			margin: 1.5em 0
-			font-weight: 600
+	height: 100vh	
+	nav	
+		height: 10vh
+		.menu-container
+			ul li	a
+				border-left: 1px solid $white-txt
+				padding: 0 1em
+	#header-content
+		height: 90vh	
+		.logo-container
+			font-size: 3em	
+		.logo-descr
 			text-transform: uppercase
-			color: #fff				
-			span					
+			letter-spacing: 2px
+			font-size: 1.5em
+		h2		
+			color: $white-txt	
+			font-weight: normal
+			line-height: 1.5em
+			span
+				padding: 0 .1em
+				margin-left: .1em
+				border-radius: .1em
+				background-color: $accent-tr
+				color: $white-txt
+			.animated					
 				animation-duration: 3s
 				animation-iteration-count: infinite	
+		.h2-descr
+			text-transform: uppercase
 
 ////////////////////////////////////////////////
 // #sec-2
@@ -161,8 +169,9 @@ header
 		&:hover
 			border: 5px solid $accent
 		.circle		
+			width: 100%
 			border-radius: 50%	
-	h3, h2
+	h3
 		color: $white-txt		
 
 ////////////////////////////////////////////////
@@ -170,10 +179,6 @@ header
 ////////////////////////////////////////////////
 #sec-4
 	color: $dark-txt	
-	.col
-		margin-bottom: 1em	
-	.btn
-		margin-bottom: 2em	
 	img
 		border-radius: .25em	
 
@@ -188,10 +193,10 @@ header
 		height: 25em	
 	h2,
 		font-weight: normal
-		color: #fff				
+		color: $white-txt			
 		span
 			font-size: 1.4em
-			color: #fff			
+			color: $white-txt	
 
 #sec-5	
 	background-image: url("../img/sec5_bg.jpg")
@@ -217,34 +222,73 @@ header
 			margin-top: .8em	
 
 ////////////////////////////////////////////////
+// #sec-8
+////////////////////////////////////////////////
+#sec-8
+	background-color: $bg-dark-tr-90
+	h2
+		text-align: center	
+		color: $white-txt
+	.arrow		
+		text-align: center
+		svg
+			width: 3em
+		&:hover
+			path
+				fill: $accent
+	.prev
+		transform: rotate(180deg)
+	.slider-container
+		overflow: hidden
+		border-left: 1px solid $accent
+		border-right: 1px solid $accent
+		.slides
+			position: relative
+			padding: 0
+			margin: 0
+			li
+				list-style-type: none	
+				display: table
+				float: left
+				.img-container
+					text-align: center
+					img
+						border-radius: 50%		
+						border: 2px solid $accent						
+				h3
+					color: $white-txt
+					text-transform: none
+				p
+					line-height: 1.5em	
+
+////////////////////////////////////////////////
 // footer
 ////////////////////////////////////////////////
 footer	
-	background-color: #0f0e11		
+	background-color: $bg-dark	
 	.icons			
-		img
+		svg
 			width: 1.5em
-			margin: 0 .3em		
+			margin: 0 .3em	
+			path
+			&:hover
+				path
+					fill: $accent		
 
-	.nav-bar	
+	.menu-container
 		ul li
 			display: block
 			line-height: 1.5em
 			margin-bottom: .5em	
-			img
+			svg
 				width: 2.25em
 				padding: .5em
 				border: 1px solid $white-txt
-				border-radius: 4px
-				background-color: $dark-txt	
-				&:hover
-					background-color: lighten($dark-txt, 8%)
+				border-radius: .3em					
 	
 	address span, p span
 		color: $accent
 
-	address
-		// font-size: .9em
 	.gallery-descr
 		font-size: 1.2em 
 		text-transform: uppercase
@@ -265,13 +309,13 @@ footer
 	right: 0
 	top: 0
 	display: none		
-	background-color: #000000bb	
+	background-color: $bg-dark-tr-70
 	img
 		width: 2em
 	.container
 		border: solid 1px $accent
-		border-radius: 4px
-		background-color: #000000dd		
+		border-radius: .3em
+		background-color: $bg-dark-tr-90	
 	h3
 		color: $white-txt
 	form	
@@ -310,7 +354,37 @@ footer
 			color: $accent
 			+mt(.3s)
 
+////////////////////////////////////////////////		
+// Отсчет времени #countdown
+////////////////////////////////////////////////
+#countdown .clock-container
+	background: #00000088
+	padding: 1em 2em 2em
+	border-radius: 5px
+	border: 1px solid $accent
+	h2	
+		color: $white-txt
+	#clock	
+		padding: 1.25em 0
+		border-radius: 5px
+		background: #00000099
+		.hours, .minutes, .seconds
+			padding: .25em
+			border-radius: .1em
+			background: $accent-tr
+		span
+			display: inline-block
+			font-size: 2.5em
+			padding: .25em 0
+			line-height: 1em
+			font-weight: bold
+		.smalltext
+			padding-top: .5em
+			font-size: 0.8em
+			text-transform: uppercase		
+
+
 .mfp-close
-	color: #fff	!important			
+	color: $white-txt	!important			
 
 @import "media" 
