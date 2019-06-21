@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlenkaKR/Fitness.git"
+    "url": "git+https://github.com/mrplotnik/Fitness.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AlenkaKR/Fitness/issues"
+    "url": "https://github.com/mrplotnik/Fitness/issues"
   },
-  "homepage": "https://github.com/AlenkaKR/Fitness#readme",
+  "homepage": "https://github.com/mrplotnik/Fitness#readme",
   "devDependencies": {
     "browser-sync": "^2.26.3",
     "del": "^4.0.0",
