@@ -14,6 +14,8 @@ var
 	cache         = require('gulp-cache'), // Подключаем библиотеку кеширования
 	del         	= require('del'), // Подключаем библиотеку для  удаления файлов и папок
 	ftp 					= require('vinyl-ftp'),
+
+	notify        = require('gulp-notify'),
 	gutil 				= require('gulp-util'),
 
 	reload				= browserSync.reload; 
@@ -27,13 +29,16 @@ gulp.task('pug', () => {
 });
 
 gulp.task('sass', () => { 	
-	return gulp.src('app/sass/**/*.sass')		
+	return gulp.src('app/sass/main.sass')		
 		.pipe(sass({
-			outputStyle: 'expand', 
+			outputStyle: 'expanded', 
 			includePaths: require('node-bourbon').includePaths
-		}).on('error', sass.logError)) // Оповещение в случае ошибки при компиляции SASS в CSS
-		.pipe(autoprefixer(['last 15 versions'])) // Добавление автопрефиксов, для одинакового отображения во всех браузерах (последнии 15 версий)
-		.pipe(csso())	// Минимизируем	 		
+		}).on('error', notify.onError({
+      message: 'Где-то тут: <%= error.message %>',
+      title: 'Ошибка в SASS'
+    }))) 
+		// .pipe(autoprefixer(['last 15 versions'])) // Добавление автопрефиксов, для одинакового отображения во всех браузерах (последнии 15 версий)
+		// .pipe(csso())	// Минимизируем	 		
 		// .pipe(rename({suffix: '.min', prefix : ''})) // Добавление суффикса и префикса в название CSS файла
 		.pipe(gulp.dest('dist/css'))			
 		.pipe(browserSync.stream()); // Inject	
@@ -50,9 +55,9 @@ gulp.task('js', () => {
 		'app/js/common.js', // Always at the end
 		])
 	.pipe(concat('scripts.min.js'))
-	.pipe(uglify()) // Mifify js (opt.)
+	// .pipe(uglify()) // Mifify js (opt.)
 	.pipe(gulp.dest('dist/js'))
-	.pipe(reload({ stream: true }))
+	.pipe(reload({stream: true}))
 });
 
 //-------------------------------------------
