@@ -10,26 +10,46 @@ const
 
 	sourceMaps 		= require('gulp-sourcemaps'),
 	
-	sass 					= require('gulp-sass'),
-	cssToScss 		= require('gulp-css-scss'),
+	sass 					= require('gulp-sass'), // Компиляция SASS в CSS
+	cssToScss 		= require('gulp-css-scss'), // Конвертируем CSS в SCSS
 	autoprefixer 	= require('gulp-autoprefixer'), // Подключаем библиотеку для автоматического добавления префиксов
 	csso 					= require('gulp-csso'), // Подключаем отличный CSS компрессор
 	
-	concat        = require('gulp-concat'),
-	rename 				= require('gulp-rename'), // Подключаем библиотеку для переименования файлов
-	uglify        = require('gulp-uglify'),
+	concat        = require('gulp-concat'),	// Конкатенация файлов
+	uglify        = require('gulp-uglify'), // Минимизация JS
 	imagemin 			= require('gulp-imagemin'), // Оптимизируем картинки
-	cache         = require('gulp-cache'), // Подключаем библиотеку кеширования
+	
 	del         	= require('del'), // Подключаем библиотеку для  удаления файлов и папок
 	ftp 					= require('vinyl-ftp'),
 
-	notify        = require('gulp-notify'),
-	debug      	  = require('gulp-debug'),
+	notify        = require('gulp-notify'),	
 	gulpIf 				= require('gulp-if'),
-	gutil 				= require('gulp-util'),
+	gutil 				= require('gulp-util'), // Лог
 
 	reload				= browserSync.reload; 
 
+//-------------------------------------------
+// https://habr.com/ru/post/259225/
+// Gulp.watch: ловим ошибки правильно
+//-------------------------------------------
+function wrapPipe(taskFn) {
+  return function(done) {
+    var onSuccess = function() {
+      done();
+    };
+    var onError = function(err) {
+      done(err);
+    }
+    var outStream = taskFn(onSuccess, onError);
+    if(outStream && typeof outStream.on === 'function') {
+      outStream.on('end', onSuccess);
+    }
+  }
+}
+
+//-------------------------------------------
+// Компиляция PUG в HTML
+//-------------------------------------------
 gulp.task('pug', () => {
 	return gulp.src( 'app/pug/index.pug', )
 		.pipe(plumber())
@@ -38,24 +58,27 @@ gulp.task('pug', () => {
 		.pipe(reload({stream: true}))	
 });
 
-gulp.task('sass', () => { 	
+//-------------------------------------------
+// 
+//-------------------------------------------
+gulp.task('sass', () => {	
 	return gulp.src('app/sass/main.sass')		
 		.pipe(gulpIf(isDev, sourceMaps.init()))
+		.pipe(plumber())
 		.pipe(sass({
 			outputStyle: 'expanded', 
 			includePaths: require('node-bourbon').includePaths
-		}).on('error', notify.onError({
-			message: 'Где-то тут: <%= error.message %>',
-			title: 'Ошибка в SASS'
-		}))) 
+		}))
 		.pipe(gulpIf(isDev, sourceMaps.write()))    
 		.pipe(gulpIf(!isDev, autoprefixer(['last 15 versions']))) // Добавление автопрефиксов, для одинакового отображения во всех браузерах (последнии 15 версий)
-		.pipe(gulpIf(!isDev, csso())) // Минимизируем				
-		// .pipe(rename({suffix: '.min', prefix : ''})) // Добавление суффикса и префикса в название CSS файла
-		.pipe(gulp.dest('dist/css'))			
+		.pipe(gulpIf(!isDev, csso())) // Минимизируем	
+		.pipe(gulp.dest('dist/css'))
 		.pipe(browserSync.stream()); // Inject	
 });
 
+//-------------------------------------------
+// 
+//-------------------------------------------
 gulp.task('js', () => {
 	return gulp.src([
 		'app/libs/jquery/dist/jquery.min.js',
@@ -79,7 +102,7 @@ gulp.task('js', () => {
 //-------------------------------------------
 gulp.task('php', () => {	
 	return gulp.src('app/php/*.php')		
-	.pipe(gulp.dest('dist/php/'));
+		.pipe(gulp.dest('dist/php/'));
 });	
 
 //----------------------------------------------
@@ -99,10 +122,6 @@ gulp.task('imagemin', () =>
 		}))
 		.pipe(gulp.dest('dist/img'))
 ));
-
-gulp.task('clear', () =>
-		cache.clearAll()
-);
 
 //---------------------------------------------
 // Browser-sync
@@ -159,12 +178,12 @@ gulp.task('cssToScss', () => {
 //----------------------------------------------
 // Наблюдаем за изменениями, компилируем, перезагружаем
 //----------------------------------------------
-gulp.task('watch', gulp.parallel('pug', 'sass', 'js', 'php', 'imagemin', 'browser-sync'), () => {
+gulp.task('watch', gulp.parallel('pug', 'sass', 'js', 'php', 'imagemin', 'browser-sync', () => {
 	gulp.watch('app/pug/**/*.pug',  gulp.parallel('pug'));
-	gulp.watch('app/sass/*.sass',  gulp.parallel('sass'));
+	gulp.watch('app/sass/*.sass',  gulp.series('sass'));
 	gulp.watch('app/js/*.js',  gulp.parallel('js'));
 	gulp.watch('app/*.php',  gulp.parallel('php'));
-});	
+}));	
 
 //-------------------------------------------	
 // Скопировать шрифты в директорию dist,
