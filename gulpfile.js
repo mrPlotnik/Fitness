@@ -141,9 +141,9 @@ gulp.task( 'deploy', () => {
 	var conn = ftp.create( {
 		host:     'files.000webhost.com',
 		port:     '21',
-		user:     'alenkakr',
-		password: 'JRgfKOZxDfvBzrtLsNES', // Do not forget to delete
-		parallel: 10,
+		user:     'plotnik-webdev',
+		password: '', // Do not forget to delete
+		parallel: 5,
 		// maxConnections: 3,
 		log:      gutil.log
 	});
@@ -152,7 +152,7 @@ gulp.task( 'deploy', () => {
 
 	return gulp.src( globs, { base: 'dist', buffer: false } )
 		// .pipe( conn.newer( 'public_html/' ) ) // only upload newer files
-		.pipe( conn.dest( 'public_html/' ) );
+		.pipe( conn.dest( 'public_html/fitness' ) );
 	});  
 
 //-------------------------------------------
