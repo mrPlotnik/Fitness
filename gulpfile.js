@@ -139,9 +139,9 @@ gulp.task('browser-sync', () => {
 gulp.task( 'deploy', () => {
 
 	var conn = ftp.create( {
-		host:     'files.000webhost.com',
-		port:     '21',
-		user:     'plotnik-webdev',
+		host:     'plotnik1992.myjino.ru',
+		// port:     '21',
+		user:     'plotnik1992_fitness',
 		password: '', // Do not forget to delete
 		parallel: 5,
 		// maxConnections: 3,
@@ -152,7 +152,7 @@ gulp.task( 'deploy', () => {
 
 	return gulp.src( globs, { base: 'dist', buffer: false } )
 		// .pipe( conn.newer( 'public_html/' ) ) // only upload newer files
-		.pipe( conn.dest( 'public_html/fitness' ) );
+		.pipe( conn.dest( '/fitness' ) );
 	});  
 
 //-------------------------------------------
